@@ -38,10 +38,6 @@ namespace Handsome.Prefabs {
 			_dateLabel.GotFocus += RemoveFocus;
 		}
 
-		private void RemoveFocus (object sender, EventArgs e) {
-			ActiveControl = null;
-		}
-
 		private void AssembleDataGrid (IEnumerable<Row> data) {
 			_dataGrid.ColumnCount = 4;
 			_dataGrid.Columns[0].Name = "Količina";
@@ -59,6 +55,12 @@ namespace Handsome.Prefabs {
 			ResizeGrid(null, null);
 			_dataGrid.UserAddedRow += ResizeGrid;
 			_dataGrid.CellValueChanged += UpdateGrid;
+		}
+
+		#region Event handlers
+
+		private void RemoveFocus (object sender, EventArgs e) {
+			ActiveControl = null;
 		}
 
 		private void ResizeGrid (object sender, EventArgs e) {
@@ -123,6 +125,8 @@ namespace Handsome.Prefabs {
 			_didPassUpdate = true;
 			_updatedEntry = new Entry(date, data);
 		}
+
+		#endregion
 
 	}
 

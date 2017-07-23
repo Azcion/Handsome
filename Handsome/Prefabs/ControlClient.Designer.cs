@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Handsome.Prefabs {
@@ -35,9 +36,9 @@ namespace Handsome.Prefabs {
 			// 
 			this._clientCard.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this._clientCard.Dock = System.Windows.Forms.DockStyle.Fill;
-			this._clientCard.Location = new System.Drawing.Point(137, 0);
+			this._clientCard.Location = new Point(137, 0);
 			this._clientCard.Name = "_clientCard";
-			this._clientCard.Size = new System.Drawing.Size(370, 123);
+			this._clientCard.Size = new Size(370, 123);
 			this._clientCard.TabIndex = 0;
 			this._clientCard.Text = "";
 			// 
@@ -45,9 +46,9 @@ namespace Handsome.Prefabs {
 			// 
 			this._clientValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this._clientValue.Dock = System.Windows.Forms.DockStyle.Left;
-			this._clientValue.Location = new System.Drawing.Point(0, 0);
+			this._clientValue.Location = new Point(0, 0);
 			this._clientValue.Name = "_clientValue";
-			this._clientValue.Size = new System.Drawing.Size(137, 123);
+			this._clientValue.Size = new Size(137, 123);
 			this._clientValue.TabIndex = 1;
 			this._clientValue.Text = "";
 			// 
@@ -56,9 +57,9 @@ namespace Handsome.Prefabs {
 			this._button.Dock = System.Windows.Forms.DockStyle.Right;
 			this._button.FlatAppearance.BorderSize = 0;
 			this._button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this._button.Location = new System.Drawing.Point(507, 0);
+			this._button.Location = new Point(507, 0);
 			this._button.Name = "_button";
-			this._button.Size = new System.Drawing.Size(224, 123);
+			this._button.Size = new Size(224, 123);
 			this._button.TabIndex = 2;
 			this._button.UseVisualStyleBackColor = false;
 			// 
@@ -68,7 +69,7 @@ namespace Handsome.Prefabs {
 			this.Controls.Add(this._clientValue);
 			this.Controls.Add(this._button);
 			this.Name = "ControlClient";
-			this.Size = new System.Drawing.Size(731, 123);
+			this.Size = new Size(731, 123);
 			this.ResumeLayout(false);
 
 		}

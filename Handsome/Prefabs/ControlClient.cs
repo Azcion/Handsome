@@ -18,11 +18,6 @@ namespace Handsome.Prefabs {
 			AssembleButton();
 
 			_client = client;
-
-			_button.Click += OpenFormClient;
-			_button.MouseUp += RemoveFocus;
-			_clientCard.MouseUp += RemoveFocus;
-			_clientValue.MouseUp += RemoveFocus;
 		}
 
 		private void AssembleValue (Client client) {
@@ -33,14 +28,18 @@ namespace Handsome.Prefabs {
 			}
 
 			_clientValue.Rtf = RtfFactory.BuildValue(Row.Format(totalValue));
+			_clientValue.MouseUp += RemoveFocus;
 		}
 
 		private void AssembleCard (Client client) {
 			_clientCard.Rtf = RtfFactory.BuildClientCard(client);
+			_clientCard.MouseUp += RemoveFocus;
 		}
 
 		private void AssembleButton () {
 			_button.BackColor = Green;
+			_button.Click += OpenFormClient;
+			_button.MouseUp += RemoveFocus;
 		}
 
 		#region Event handlers

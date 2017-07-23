@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Windows.Forms;
 using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
-	internal partial class FormClient : Form {
+	internal partial class FormClient {
 
-		private Client _client;
+		private readonly Client _client;
 
 		public FormClient (Client client) {
 			_client = client;

@@ -4,7 +4,7 @@ using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
-	public partial class FormPicker : Form {
+	public partial class FormPicker {
 
 		private List<FormClient> _openClientForms;
 

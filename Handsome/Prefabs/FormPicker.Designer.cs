@@ -1,6 +1,11 @@
-﻿namespace Handsome.Prefabs {
+﻿using System.Drawing;
+using System.Windows.Forms;
 
-	partial class FormPicker {
+namespace Handsome.Prefabs {
+
+	partial class FormPicker : Form {
+
+		private Panel _mainPanel;
 
 		/// <summary>
 		/// Required designer variable.
@@ -19,40 +24,30 @@
 			base.Dispose(disposing);
 		}
 
-		#region Windows Form Designer generated code
-
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
 		private void InitializeComponent () {
-			this._mainPanel = new System.Windows.Forms.Panel();
+			this._mainPanel = new Panel();
 			this.SuspendLayout();
 			// 
 			// _mainPanel
 			// 
-			this._mainPanel.BackColor = System.Drawing.Color.White;
-			this._mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this._mainPanel.Location = new System.Drawing.Point(0, 0);
+			this._mainPanel.BackColor = Color.White;
+			this._mainPanel.Dock = DockStyle.Fill;
+			this._mainPanel.Location = new Point(0, 0);
 			this._mainPanel.Name = "_mainPanel";
-			this._mainPanel.Size = new System.Drawing.Size(804, 600);
+			this._mainPanel.Size = new Size(804, 600);
 			this._mainPanel.TabIndex = 0;
 			// 
 			// FormPicker
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(804, 600);
+			this.AutoScaleDimensions = new SizeF(6F, 13F);
+			this.AutoScaleMode = AutoScaleMode.Font;
+			this.ClientSize = new Size(804, 600);
 			this.Controls.Add(this._mainPanel);
 			this.Name = "FormPicker";
 			this.Text = "FormPicker";
 			this.ResumeLayout(false);
 
 		}
-
-		#endregion
-
-		private System.Windows.Forms.Panel _mainPanel;
 
 	}
 
