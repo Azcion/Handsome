@@ -36,7 +36,6 @@ namespace Handsome.Prefabs {
 			this._mainPanel.Location = new Point(0, 0);
 			this._mainPanel.Name = "_mainPanel";
 			this._mainPanel.Size = new Size(804, 600);
-			this._mainPanel.TabIndex = 0;
 			// 
 			// FormPicker
 			// 

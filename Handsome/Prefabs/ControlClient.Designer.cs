@@ -58,7 +58,7 @@ namespace Handsome.Prefabs {
 			this._button.Dock = DockStyle.Right;
 			this._button.FlatAppearance.BorderSize = 0;
 			this._button.FlatStyle = FlatStyle.Flat;
-			this._button.Font = new Font("Open Sans", 36F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+			this._button.Font = new Font("Open Sans", 36F, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
 			this._button.ForeColor = Color.White;
 			this._button.Location = new Point(507, 0);
 			this._button.Name = "_button";

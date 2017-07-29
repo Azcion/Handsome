@@ -87,7 +87,6 @@ namespace Handsome.Prefabs {
 			this._mainPanel.Location = new Point(0, 0);
 			this._mainPanel.Name = "_mainPanel";
 			this._mainPanel.Size = new Size(791, 281);
-			this._mainPanel.TabIndex = 0;
 			// 
 			// _innerPanel
 			// 
@@ -106,16 +105,14 @@ namespace Handsome.Prefabs {
 			this._innerPanel.Location = new Point(20, 20);
 			this._innerPanel.Name = "_innerPanel";
 			this._innerPanel.Size = new Size(641, 241);
-			this._innerPanel.TabIndex = 0;
 			// 
 			// _nameLabel
 			// 
 			this._nameLabel.AutoSize = true;
-			this._nameLabel.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
+			this._nameLabel.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, (byte) 238);
 			this._nameLabel.Location = new Point(3, 0);
 			this._nameLabel.Name = "_nameLabel";
 			this._nameLabel.Size = new Size(53, 22);
-			this._nameLabel.TabIndex = 0;
 			this._nameLabel.Text = "Naziv";
 			// 
 			// _namePanel
@@ -126,12 +123,11 @@ namespace Handsome.Prefabs {
 			this._namePanel.Location = new Point(7, 25);
 			this._namePanel.Name = "_namePanel";
 			this._namePanel.Size = new Size(451, 44);
-			this._namePanel.TabIndex = 1;
 			// 
 			// _nameBox
 			// 
 			this._nameBox.BorderStyle = BorderStyle.None;
-			this._nameBox.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+			this._nameBox.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, (byte) 238);
 			this._nameBox.Location = new Point(7, 7);
 			this._nameBox.Name = "_nameBox";
 			this._nameBox.Size = new Size(437, 29);
@@ -140,11 +136,10 @@ namespace Handsome.Prefabs {
 			// _ownerLabel
 			// 
 			this._ownerLabel.AutoSize = true;
-			this._ownerLabel.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
+			this._ownerLabel.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, (byte) 238);
 			this._ownerLabel.Location = new Point(3, 81);
 			this._ownerLabel.Name = "_ownerLabel";
 			this._ownerLabel.Size = new Size(65, 22);
-			this._ownerLabel.TabIndex = 2;
 			this._ownerLabel.Text = "Lastnik";
 			// 
 			// _ownerPanel
@@ -155,12 +150,11 @@ namespace Handsome.Prefabs {
 			this._ownerPanel.Location = new Point(7, 106);
 			this._ownerPanel.Name = "_ownerPanel";
 			this._ownerPanel.Size = new Size(451, 44);
-			this._ownerPanel.TabIndex = 3;
 			// 
 			// _ownerBox
 			// 
 			this._ownerBox.BorderStyle = BorderStyle.None;
-			this._ownerBox.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+			this._ownerBox.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, (byte) 238);
 			this._ownerBox.Location = new Point(7, 7);
 			this._ownerBox.Name = "_ownerBox";
 			this._ownerBox.Size = new Size(437, 29);
@@ -169,11 +163,10 @@ namespace Handsome.Prefabs {
 			// _addressLabel
 			// 
 			this._addressLabel.AutoSize = true;
-			this._addressLabel.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
+			this._addressLabel.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, (byte) 238);
 			this._addressLabel.Location = new Point(3, 162);
 			this._addressLabel.Name = "_addressLabel";
 			this._addressLabel.Size = new Size(63, 22);
-			this._addressLabel.TabIndex = 4;
 			this._addressLabel.Text = "Naslov";
 			// 
 			// _addressPanel
@@ -184,12 +177,11 @@ namespace Handsome.Prefabs {
 			this._addressPanel.Location = new Point(7, 187);
 			this._addressPanel.Name = "_addressPanel";
 			this._addressPanel.Size = new Size(451, 44);
-			this._addressPanel.TabIndex = 5;
 			// 
 			// _addressBox
 			// 
 			this._addressBox.BorderStyle = BorderStyle.None;
-			this._addressBox.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+			this._addressBox.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, (byte) 238);
 			this._addressBox.Location = new Point(7, 7);
 			this._addressBox.Name = "_addressBox";
 			this._addressBox.Size = new Size(437, 29);
@@ -199,11 +191,10 @@ namespace Handsome.Prefabs {
 			// 
 			this._vatLabel.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
 			this._vatLabel.AutoSize = true;
-			this._vatLabel.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
+			this._vatLabel.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, (byte) 238);
 			this._vatLabel.Location = new Point(485, 0);
 			this._vatLabel.Name = "_vatLabel";
 			this._vatLabel.Size = new Size(89, 22);
-			this._vatLabel.TabIndex = 6;
 			this._vatLabel.Text = "Davčna št.";
 			// 
 			// _vatPanel
@@ -215,12 +206,11 @@ namespace Handsome.Prefabs {
 			this._vatPanel.Location = new Point(489, 25);
 			this._vatPanel.Name = "_vatPanel";
 			this._vatPanel.Size = new Size(144, 44);
-			this._vatPanel.TabIndex = 7;
 			// 
 			// _vatBox
 			// 
 			this._vatBox.BorderStyle = BorderStyle.None;
-			this._vatBox.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+			this._vatBox.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, (byte) 238);
 			this._vatBox.Location = new Point(7, 7);
 			this._vatBox.Name = "_vatBox";
 			this._vatBox.Size = new Size(131, 29);
@@ -230,11 +220,10 @@ namespace Handsome.Prefabs {
 			// 
 			this._phone0Label.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
 			this._phone0Label.AutoSize = true;
-			this._phone0Label.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
+			this._phone0Label.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, (byte) 238);
 			this._phone0Label.Location = new Point(485, 81);
 			this._phone0Label.Name = "_phone0Label";
 			this._phone0Label.Size = new Size(67, 22);
-			this._phone0Label.TabIndex = 8;
 			this._phone0Label.Text = "Telefon";
 			// 
 			// _phone0Panel
@@ -246,12 +235,11 @@ namespace Handsome.Prefabs {
 			this._phone0Panel.Location = new Point(489, 106);
 			this._phone0Panel.Name = "_phone0Panel";
 			this._phone0Panel.Size = new Size(144, 44);
-			this._phone0Panel.TabIndex = 9;
 			// 
 			// _phone0Box
 			// 
 			this._phone0Box.BorderStyle = BorderStyle.None;
-			this._phone0Box.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+			this._phone0Box.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, (byte) 238);
 			this._phone0Box.Location = new Point(7, 7);
 			this._phone0Box.Name = "_phone0Box";
 			this._phone0Box.Size = new Size(131, 29);
@@ -261,11 +249,10 @@ namespace Handsome.Prefabs {
 			// 
 			this._phone1Label.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
 			this._phone1Label.AutoSize = true;
-			this._phone1Label.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(238)));
+			this._phone1Label.Font = new Font("Open Sans Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, (byte) 238);
 			this._phone1Label.Location = new Point(485, 162);
 			this._phone1Label.Name = "_phone1Label";
 			this._phone1Label.Size = new Size(67, 22);
-			this._phone1Label.TabIndex = 10;
 			this._phone1Label.Text = "Telefon";
 			// 
 			// _phone1Panel
@@ -277,12 +264,11 @@ namespace Handsome.Prefabs {
 			this._phone1Panel.Location = new Point(489, 187);
 			this._phone1Panel.Name = "_phone1Panel";
 			this._phone1Panel.Size = new Size(144, 44);
-			this._phone1Panel.TabIndex = 11;
 			// 
 			// _phone1Box
 			// 
 			this._phone1Box.BorderStyle = BorderStyle.None;
-			this._phone1Box.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+			this._phone1Box.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, (byte) 238);
 			this._phone1Box.Location = new Point(7, 7);
 			this._phone1Box.Name = "_phone1Box";
 			this._phone1Box.Size = new Size(131, 29);
@@ -293,12 +279,11 @@ namespace Handsome.Prefabs {
 			this._button.Anchor = AnchorStyles.Top;
 			this._button.FlatAppearance.BorderSize = 0;
 			this._button.FlatStyle = FlatStyle.Flat;
-			this._button.Font = new Font("Open Sans", 36F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+			this._button.Font = new Font("Open Sans", 36F, FontStyle.Regular, GraphicsUnit.Point, (byte) 238);
 			this._button.ForeColor = Color.White;
 			this._button.Location = new Point(678, 20);
 			this._button.Name = "_button";
 			this._button.Size = new Size(95, 231);
-			this._button.TabIndex = 1;
 			this._button.Text = "✓";
 			this._button.UseVisualStyleBackColor = false;
 			// 

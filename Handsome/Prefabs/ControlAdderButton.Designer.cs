@@ -35,23 +35,21 @@ namespace Handsome.Prefabs {
 			// 
 			this._mainPanel.Controls.Add(this._button);
 			this._mainPanel.Dock = DockStyle.Fill;
-			this._mainPanel.Font = new Font("Open Sans", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+			this._mainPanel.Font = new Font("Open Sans", 8.25F, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
 			this._mainPanel.Location = new Point(0, 0);
 			this._mainPanel.Name = "_mainPanel";
 			this._mainPanel.Size = new Size(768, 140);
-			this._mainPanel.TabIndex = 0;
 			// 
 			// _button
 			// 
 			this._button.Anchor = AnchorStyles.Top;
 			this._button.FlatAppearance.BorderSize = 0;
 			this._button.FlatStyle = FlatStyle.Flat;
-			this._button.Font = new Font("Open Sans", 36F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
+			this._button.Font = new Font("Open Sans", 36F, FontStyle.Regular, GraphicsUnit.Point, (byte) 238);
 			this._button.ForeColor = Color.White;
 			this._button.Location = new Point(256, 25);
 			this._button.Name = "_button";
 			this._button.Size = new Size(256, 90);
-			this._button.TabIndex = 0;
 			this._button.Text = "+";
 			this._button.UseVisualStyleBackColor = false;
 			// 

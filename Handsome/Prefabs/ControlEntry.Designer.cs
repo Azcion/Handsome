@@ -49,7 +49,6 @@ namespace Handsome.Prefabs {
 			this._entryPanel.MinimumSize = new Size(0, 75);
 			this._entryPanel.Name = "_entryPanel";
 			this._entryPanel.Size = new Size(500, 75);
-			this._entryPanel.TabIndex = 5;
 			// 
 			// _dataGrid
 			// 
@@ -94,29 +93,28 @@ namespace Handsome.Prefabs {
 			this._dataGrid.ShowCellToolTips = false;
 			this._dataGrid.ShowEditingIcon = false;
 			this._dataGrid.Size = new Size(500, 37);
-			this._dataGrid.TabIndex = 1;
 			// 
 			// _dateLabel
 			// 
 			this._dateLabel.BackColor = Color.White;
 			this._dateLabel.BorderStyle = BorderStyle.None;
 			this._dateLabel.Dock = DockStyle.Top;
+			this._dateLabel.Enabled = false;
 			this._dateLabel.Location = new Point(0, 0);
 			this._dateLabel.Multiline = false;
 			this._dateLabel.Name = "_dateLabel";
 			this._dateLabel.ReadOnly = true;
 			this._dateLabel.ScrollBars = RichTextBoxScrollBars.None;
 			this._dateLabel.Size = new Size(500, 38);
-			this._dateLabel.TabIndex = 2;
 			this._dateLabel.Text = "";
 			this._dateLabel.WordWrap = false;
 			// 
-			// EntryControl
+			// ControlEntry
 			// 
 			this.AutoScaleDimensions = new SizeF(6F, 13F);
 			this.AutoScaleMode = AutoScaleMode.Font;
 			this.Controls.Add(this._entryPanel);
-			this.Name = "EntryControl";
+			this.Name = "ControlEntry";
 			this.Size = new Size(500, 300);
 			this._entryPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this._dataGrid)).EndInit();

@@ -7,7 +7,6 @@ namespace Handsome.Prefabs {
 
 		private RichTextBox _clientCard;
 		private Panel _mainPanel;
-		private Panel _entriesPanel;
 
 		/// <summary>
 		/// Required designer variable.
@@ -29,7 +28,6 @@ namespace Handsome.Prefabs {
 		private void InitializeComponent () {
 			this._clientCard = new RichTextBox();
 			this._mainPanel = new Panel();
-			this._entriesPanel = new Panel();
 			this._mainPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -38,6 +36,7 @@ namespace Handsome.Prefabs {
 			this._clientCard.BackColor = Color.White;
 			this._clientCard.BorderStyle = BorderStyle.None;
 			this._clientCard.Dock = DockStyle.Top;
+			this._clientCard.Enabled = false;
 			this._clientCard.Location = new Point(0, 0);
 			this._clientCard.Name = "_clientCard";
 			this._clientCard.ReadOnly = true;
@@ -47,21 +46,13 @@ namespace Handsome.Prefabs {
 			// 
 			// _mainPanel
 			// 
+			this._mainPanel.AutoScroll = true;
 			this._mainPanel.BackColor = Color.Lime;
-			this._mainPanel.Controls.Add(this._entriesPanel);
 			this._mainPanel.Controls.Add(this._clientCard);
 			this._mainPanel.Dock = DockStyle.Fill;
 			this._mainPanel.Location = new Point(0, 0);
 			this._mainPanel.Name = "_mainPanel";
 			this._mainPanel.Size = new Size(804, 600);
-			// 
-			// _entriesPanel
-			// 
-			this._entriesPanel.BackColor = Color.GhostWhite;
-			this._entriesPanel.Dock = DockStyle.Fill;
-			this._entriesPanel.Location = new Point(0, 248);
-			this._entriesPanel.Name = "_entriesPanel";
-			this._entriesPanel.Size = new Size(804, 352);
 			// 
 			// FormClient
 			// 
