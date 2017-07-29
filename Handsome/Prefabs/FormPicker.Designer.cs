@@ -30,6 +30,7 @@ namespace Handsome.Prefabs {
 			// 
 			// _mainPanel
 			// 
+			this._mainPanel.AutoScroll = true;
 			this._mainPanel.BackColor = Color.White;
 			this._mainPanel.Dock = DockStyle.Fill;
 			this._mainPanel.Location = new Point(0, 0);

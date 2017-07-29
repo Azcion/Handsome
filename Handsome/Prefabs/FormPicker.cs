@@ -80,6 +80,11 @@ namespace Handsome.Prefabs {
 			Control.ControlCollection c = ((Button)sender).Parent.Controls[1].Controls;
 
 			string name = GetText(c, "name");
+
+			if (name == "") {
+				return;
+			}
+
 			string owner = GetText(c, "owner");
 			string address = GetText(c, "address");
 			string vat = GetText(c, "vat");
@@ -97,7 +102,17 @@ namespace Handsome.Prefabs {
 		#endregion
 
 		private static string GetText (Control.ControlCollection controls, string name) {
-			return controls[$"_{name}Panel"].Controls[0].Text;
+			if (!(controls[$"_{name}Panel"].Controls[0] is TextBox textBox)) {
+				return "<error>";
+			}
+
+			string text = textBox.Text;
+
+			if (name != "name" || text != "") {
+				textBox.Text = "";
+			}
+
+			return text;
 		}
 
 	}
