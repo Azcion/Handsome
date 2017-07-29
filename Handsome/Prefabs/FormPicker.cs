@@ -6,7 +6,7 @@ namespace Handsome.Prefabs {
 
 	public partial class FormPicker {
 
-		private ControlAddClient _cac;
+		private ControlAddClient _controlAddClient;
 
 		public FormPicker () {
 			InitializeComponent();
@@ -33,12 +33,12 @@ namespace Handsome.Prefabs {
 		}
 
 		private void InsertClientAdder () {
-			_cac = new ControlAddClient {
+			_controlAddClient = new ControlAddClient {
 				Dock = DockStyle.Top,
 				Visible = false
 			};
 
-			_mainPanel.Controls.Add(_cac);
+			_mainPanel.Controls.Add(_controlAddClient);
 		}
 
 		private void InsertAdderButton () {
@@ -58,7 +58,7 @@ namespace Handsome.Prefabs {
 		private void ShowClientAdder (object sender, EventArgs e) {
 			if (sender is Button control) {
 				control.Parent.Parent.Visible = false;
-				_cac.Visible = true;
+				_controlAddClient.Visible = true;
 			}			
 		}
 
