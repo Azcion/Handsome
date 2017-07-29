@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Handsome.Source;
 
 namespace Handsome.Prefabs {
@@ -8,27 +9,31 @@ namespace Handsome.Prefabs {
 		private readonly Client _client;
 
 		public FormClient (Client client) {
+			InitializeComponent();
+
 			_client = client;
 
-			InitializeComponent();
-			
 			AssembleClientCard();
 			InsertEntries();
+
+			ActiveControl = _mainPanel;
 		}
 
 		private void AssembleClientCard () {
 			_clientCard.Rtf = RtfFactory.BuildClientCardLarge(_client);
-			_clientCard.GotFocus += RemoveFocus;
 		}
 
 		private void InsertEntries () {
-			foreach (Entry entry in _client.Entries) {
-				_entriesPanel.Controls.Add(new ControlEntry(entry));
+			if (_client.Entries.Count == 0) {
+				Entry entry = new Entry(DateTime.Today.ToString("d.M.yyyy"), new List<Row>());
+				_mainPanel.Controls.Add(new ControlEntry(entry));
 			}
-		}
 
-		private void RemoveFocus (object sender, EventArgs e) {
-			ActiveControl = null;
+			foreach (Entry entry in _client.Entries) {
+				_mainPanel.Controls.Add(new ControlEntry(entry));
+			}
+
+			_clientCard.SendToBack();
 		}
 
 	}
