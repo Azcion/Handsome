@@ -93,24 +93,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\Row.cs" />
     <Compile Include="Source\RtfFactory.cs" />
-    <EmbeddedResource Include="Prefabs\ControlAddClient.resx">
-      <DependentUpon>ControlAddClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prefabs\ControlClient.resx">
-      <DependentUpon>ControlClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prefabs\ControlEntry.resx">
-      <DependentUpon>ControlEntry.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prefabs\ControlAdderButton.resx">
-      <DependentUpon>ControlAdderButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prefabs\FormClient.resx">
-      <DependentUpon>FormClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prefabs\FormPicker.resx">
-      <DependentUpon>FormPicker.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
