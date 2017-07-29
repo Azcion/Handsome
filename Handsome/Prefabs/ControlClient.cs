@@ -28,12 +28,12 @@ namespace Handsome.Prefabs {
 			}
 
 			_clientValue.Rtf = RtfFactory.BuildValue(Row.Format(totalValue));
-			_clientValue.MouseUp += RemoveFocus;
+			_clientValue.MouseDown += RemoveFocus;
 		}
 
 		private void AssembleCard (Client client) {
 			_clientCard.Rtf = RtfFactory.BuildClientCard(client);
-			_clientCard.MouseUp += RemoveFocus;
+			_clientCard.MouseDown += RemoveFocus;
 		}
 
 		private void AssembleButton () {
@@ -50,7 +50,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void RemoveFocus (object sender, EventArgs e) {
-			ActiveControl = null;
+			ActiveControl = _mainPanel;
 		}
 
 		#endregion

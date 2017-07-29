@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Windows.Forms;
 using Handsome.Source;
 
@@ -6,14 +6,16 @@ namespace Handsome.Prefabs {
 
 	public partial class FormPicker {
 
-		private List<FormClient> _openClientForms;
+		private ControlAddClient _cac;
 
 		public FormPicker () {
 			InitializeComponent();
-
-			_openClientForms = new List<FormClient>();
 			
 			InsertClients();
+			InsertClientAdder();
+			InsertAdderButton();
+
+			ActiveControl = _mainPanel;
 		}
 
 		private void InsertClients () {
@@ -29,6 +31,38 @@ namespace Handsome.Prefabs {
 				_mainPanel.Controls.Add(cc);
 			}
 		}
+
+		private void InsertClientAdder () {
+			_cac = new ControlAddClient {
+				Dock = DockStyle.Top,
+				Visible = false
+			};
+
+			_mainPanel.Controls.Add(_cac);
+		}
+
+		private void InsertAdderButton () {
+			ControlAdderButton cab = new ControlAdderButton {
+				Dock = DockStyle.Top
+			};
+
+			if (cab.Controls[0].Controls["_button"] is Button control) {
+				control.Click += ShowClientAdder;
+			}
+
+			_mainPanel.Controls.Add(cab);
+		}
+
+		#region Event handlers
+
+		private void ShowClientAdder (object sender, EventArgs e) {
+			if (sender is Button control) {
+				control.Parent.Parent.Visible = false;
+				_cac.Visible = true;
+			}			
+		}
+
+		#endregion
 
 	}
 

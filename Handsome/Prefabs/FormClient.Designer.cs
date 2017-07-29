@@ -42,7 +42,7 @@ namespace Handsome.Prefabs {
 			this._clientCard.Name = "_clientCard";
 			this._clientCard.ReadOnly = true;
 			this._clientCard.ScrollBars = RichTextBoxScrollBars.None;
-			this._clientCard.Size = new Size(804, 219);
+			this._clientCard.Size = new Size(804, 248);
 			this._clientCard.Text = "";
 			// 
 			// _mainPanel
@@ -59,10 +59,9 @@ namespace Handsome.Prefabs {
 			// 
 			this._entriesPanel.BackColor = Color.GhostWhite;
 			this._entriesPanel.Dock = DockStyle.Fill;
-			this._entriesPanel.Location = new Point(0, 219);
+			this._entriesPanel.Location = new Point(0, 248);
 			this._entriesPanel.Name = "_entriesPanel";
-			this._entriesPanel.Size = new Size(804, 381);
-			this._entriesPanel.TabIndex = 0;
+			this._entriesPanel.Size = new Size(804, 352);
 			// 
 			// FormClient
 			// 
