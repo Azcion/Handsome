@@ -121,9 +121,10 @@ namespace Handsome.Prefabs {
 			// Recreate the current entry
 			string date = DateTime.Today.ToString("d.M.yyyy");
 			_dateLabel.Rtf = RtfFactory.BuildDate(date);
-
 			_didPassUpdate = true;
 			_updatedEntry = new Entry(date, data);
+
+			((FormClient) ParentForm)?.UpdateEntries(_updatedEntry);
 		}
 
 		#endregion

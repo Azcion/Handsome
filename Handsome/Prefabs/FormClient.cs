@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
 using Handsome.Source;
 
 namespace Handsome.Prefabs {
@@ -8,15 +10,33 @@ namespace Handsome.Prefabs {
 
 		private readonly Client _client;
 
+		private bool _didChange;
+
 		public FormClient (Client client) {
 			InitializeComponent();
 
 			_client = client;
-
+			
 			AssembleClientCard();
 			InsertEntries();
 
+			FormClosing += AskIfCloseData;
 			ActiveControl = _mainPanel;
+		}
+
+		public void UpdateEntries (Entry updatedEntry) {
+			_didChange = true;
+
+			for (var i = 0; i < _client.Entries.Count; ++i) {
+				Entry entry = _client.Entries[i];
+
+				if (entry.Date == updatedEntry.Date) {
+					_client.Entries[i] = updatedEntry;
+					return;
+				}
+			}
+
+			_client.Entries.Add(updatedEntry);
 		}
 
 		private void AssembleClientCard () {
@@ -35,6 +55,26 @@ namespace Handsome.Prefabs {
 
 			_clientCard.SendToBack();
 		}
+
+		#region Event handlers
+
+		private void AskIfCloseData (object sender, CancelEventArgs e) {
+			if (_didChange) {
+				DialogResult answer = MessageBox.Show(
+					@"Shranim spremembe?", @"Zapiranje okna", MessageBoxButtons.YesNoCancel);
+
+				switch (answer) {
+					case DialogResult.Yes:
+						Json.Save(Json.Serialize(_client), _client.Name, Json.Type.Client);
+						break;
+					case DialogResult.Cancel:
+						e.Cancel = true;
+						break;
+				}
+			}
+		}
+
+		#endregion
 
 	}
 

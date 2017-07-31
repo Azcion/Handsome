@@ -47,7 +47,7 @@ namespace Handsome.Prefabs {
 			// _mainPanel
 			// 
 			this._mainPanel.AutoScroll = true;
-			this._mainPanel.BackColor = Color.Lime;
+			this._mainPanel.BackColor = Color.GhostWhite;
 			this._mainPanel.Controls.Add(this._clientCard);
 			this._mainPanel.Dock = DockStyle.Fill;
 			this._mainPanel.Location = new Point(0, 0);
