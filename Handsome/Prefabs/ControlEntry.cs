@@ -10,11 +10,14 @@ namespace Handsome.Prefabs {
 
 		private static readonly Color Green = Color.FromArgb(74, 202, 168);
 
-		private Entry _updatedEntry;
+		private readonly Client _client;
+
 		private bool _didPassUpdate;
 
-		public ControlEntry (Entry entry) {
+		public ControlEntry (Client client, Entry entry) {
 			InitializeComponent();
+
+			_client = client;
 
 			AssembleDateLabel(entry.Date);
 			AssembleDataGrid(entry.Data);
@@ -23,14 +26,21 @@ namespace Handsome.Prefabs {
 			ResizeGrid(null, null);
 		}
 
-		public bool TryGetEntry (out Entry entry) {
-			if (_didPassUpdate) {
-				entry = _updatedEntry;
-				return true;
+		private static void SetStyle (ref DataGridViewCell cell, bool restore = false) {
+			if (restore) {
+				if (cell.RowIndex % 2 == 0) {
+					cell.Style.BackColor = cell.DataGridView.DefaultCellStyle.BackColor;
+					cell.Style.ForeColor = cell.DataGridView.DefaultCellStyle.ForeColor;
+				} else {
+					cell.Style.BackColor = cell.DataGridView.AlternatingRowsDefaultCellStyle.BackColor;
+					cell.Style.ForeColor = cell.DataGridView.AlternatingRowsDefaultCellStyle.ForeColor;
+				}
+
+				return;
 			}
 
-			entry = new Entry(null, null);
-			return false;
+			cell.Style.BackColor = Color.IndianRed;
+			cell.Style.ForeColor = Color.White;
 		}
 
 		private void AssembleDateLabel (string date) {
@@ -57,6 +67,15 @@ namespace Handsome.Prefabs {
 			_dataGrid.CellValueChanged += UpdateGrid;
 		}
 
+		private void RecreateEntry (List<Row> data, bool didFail) {
+			string date = DateTime.Today.ToString("d.M.yyyy");
+			_dateLabel.Rtf = RtfFactory.BuildDate(date);
+			_didPassUpdate = true;
+
+			FormClient parent = ParentForm as FormClient;
+			parent?.UpdateEntries(new Entry(date, data), didFail);
+		}
+
 		#region Event handlers
 
 		private void RemoveFocus (object sender, EventArgs e) {
@@ -81,50 +100,42 @@ namespace Handsome.Prefabs {
 				return;
 			}
 
-			bool didFail = false;
 			List<Row> data = new List<Row>();
+			bool didFail = false;
 
 			for (var i = 0; i < dataGrid.Rows.Count - 1; i++) {
 				DataGridViewRow row = dataGrid.Rows[i];
-				object quantityCell = row.Cells[0].Value;
-				object priceCell = row.Cells[2].Value;
+				DataGridViewCell quantityCell = row.Cells[0];
+				DataGridViewCell nameCell = row.Cells[1];
+				DataGridViewCell priceCell = row.Cells[2];
 
-				if (quantityCell == null || priceCell == null) {
+				if (int.TryParse(quantityCell.Value?.ToString(), out int quantity) == false) {
+					SetStyle(ref quantityCell);
 					didFail = true;
-					continue;
+				} else {
+					SetStyle(ref quantityCell, true);
 				}
 
-				if (int.TryParse(quantityCell.ToString(), out int quantity) == false ||
-					float.TryParse(priceCell.ToString().Replace(',', '.'), out float price) == false) {
+				if (float.TryParse(priceCell.Value?.ToString().Replace(',', '.'), out float price) == false) {
+					SetStyle(ref priceCell);
 					didFail = true;
-					continue;
 				}
 
 				row.Cells[3].Value = Row.Format(quantity * price);
-				object nameCell = row.Cells[1].Value;
 
-				if (nameCell == null) {
+				if (nameCell.Value == null) {
+					SetStyle(ref nameCell);
 					didFail = true;
-					continue;
 				}
 
-				data.Add(new Row(quantity, nameCell.ToString(), price));
-			}
-
-			if (didFail) {
-				//todo alert user
-				return;
+				if (didFail == false) {
+					data.Add(new Row(quantity, nameCell.Value?.ToString(), price));
+				}
 			}
 
 			//todo create history entry if older date
 
-			// Recreate the current entry
-			string date = DateTime.Today.ToString("d.M.yyyy");
-			_dateLabel.Rtf = RtfFactory.BuildDate(date);
-			_didPassUpdate = true;
-			_updatedEntry = new Entry(date, data);
-
-			((FormClient) ParentForm)?.UpdateEntries(_updatedEntry);
+			RecreateEntry(data, didFail);
 		}
 
 		#endregion
