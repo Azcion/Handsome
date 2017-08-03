@@ -112,6 +112,8 @@ namespace Handsome.Prefabs {
 				if (float.TryParse(priceCell.Value?.ToString().Replace(',', '.'), out float price) == false) {
 					SetStyle(ref priceCell);
 					didFail = true;
+				} else {
+					SetStyle(ref priceCell, true);
 				}
 
 				row.Cells[3].Value = Row.Format(quantity * price);
@@ -119,6 +121,8 @@ namespace Handsome.Prefabs {
 				if (nameCell.Value == null) {
 					SetStyle(ref nameCell);
 					didFail = true;
+				} else {
+					SetStyle(ref nameCell, true);
 				}
 
 				if (didFail == false) {
