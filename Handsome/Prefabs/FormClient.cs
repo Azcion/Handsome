@@ -54,11 +54,6 @@ namespace Handsome.Prefabs {
 		}
 
 		private void InsertEntries () {
-			if (_client.Entries.Count == 0) {
-				Entry entry = new Entry(DateTime.Today.ToString("d.M.yyyy"), new List<Row>());
-				_mainPanel.Controls.Add(new ControlEntry(_client, entry));
-			}
-
 			foreach (Entry entry in _client.Entries) {
 				_mainPanel.Controls.Add(new ControlEntry(_client, entry));
 			}
