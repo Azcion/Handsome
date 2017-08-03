@@ -35,6 +35,11 @@ namespace Handsome.Source {
 			path += @"\Azcion\Handsome\";
 
 			List<FileInfo> files = new List<FileInfo>(new DirectoryInfo(path).GetFiles());
+
+			if (files.Count == 0) {
+				return null;
+			}
+
 			files.Sort((x, y) =>  -x.LastWriteTime.CompareTo(y.LastWriteTime));
 			string name = files[0].Name;
 
