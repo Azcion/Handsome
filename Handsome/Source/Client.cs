@@ -24,7 +24,14 @@ namespace Handsome.Source {
 		}
 
 		public Entry GetMostRecentEntry () {
-			return Entries[Entries.Count - 1];
+			if (Entries.Count != 0) {
+				return Entries[Entries.Count - 1];
+			}
+
+			Entry entry = new Entry(DateTime.Today.ToString("d.M.yyyy"), new List<Row>());
+			Entries.Add(entry);
+
+			return entry;
 		}
 
 	}
