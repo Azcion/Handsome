@@ -9,6 +9,7 @@ namespace Handsome.Source {
 		[STAThread]
 		private static void Main () {
 			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(true);
 			Application.Run(new FormPicker());
 		}
 
