@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 using Handsome.Source;
 
@@ -55,7 +53,7 @@ namespace Handsome.Prefabs {
 
 		private void InsertEntries () {
 			foreach (Entry entry in _client.Entries) {
-				_mainPanel.Controls.Add(new ControlEntry(_client, entry));
+				_mainPanel.Controls.Add(new ControlEntry(entry));
 			}
 
 			_clientCard.SendToBack();
