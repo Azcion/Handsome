@@ -81,7 +81,6 @@
       <DependentUpon>FormPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Json.cs" />
-    <Compile Include="Source\Json.Type.cs" />
     <Compile Include="Source\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\Row.cs" />

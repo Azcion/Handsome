@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 
 namespace Handsome.Source {
 
-	internal static partial class Json {
+	internal static class Json {
 
 		public static string Serialize<T> (T instance) where T : class {
 			return JsonConvert.SerializeObject(instance, Formatting.Indented);
@@ -15,14 +16,29 @@ namespace Handsome.Source {
 			return JsonConvert.DeserializeObject<T>(serialized);
 		}
 
-		public static void Save (string json, string name, Type type) {
+		public static void Save (string json) {
 			string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 			path += @"\Azcion\Handsome\";
 
 			new FileInfo(path).Directory?.Create();
 
-			path += $"{Enum.GetName(typeof(Type), type)}.{name.Replace(' ', '_')}.json";
+			DateTime dt = DateTime.Now;
+			string idString = $"{dt.Year}{dt.Month:D2}{dt.Day:D2}{dt.Hour:D2}{dt.Minute:D2}";
+			long id = long.Parse(idString);
+			path += $"Data.{id}.json";
+
 			File.WriteAllText(path, json, Encoding.Unicode);
+		}
+
+		public static string ReadMostRecent () {
+			string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+			path += @"\Azcion\Handsome\";
+
+			List<FileInfo> files = new List<FileInfo>(new DirectoryInfo(path).GetFiles());
+			files.Sort((x, y) =>  -x.LastWriteTime.CompareTo(y.LastWriteTime));
+			string name = files[0].Name;
+
+			return File.ReadAllText(path + name);
 		}
 
 	}

@@ -16,6 +16,7 @@ namespace Handsome.Prefabs {
 			InsertClientAdder();
 			InsertAdderButton();
 
+			FormClosing += SaveData;
 			ActiveControl = _mainPanel;
 		}
 
@@ -99,7 +100,17 @@ namespace Handsome.Prefabs {
 			ActiveControl = _mainPanel;
 		}
 
+		private void SaveData (object sender, EventArgs e) {
+			if (Data.ShouldSave == false) {
+				return;
+			}
+
+			Json.Save(Json.Serialize(Data.Clients));
+		}
+
 		#endregion
+
+		#region Helpers
 
 		private static string GetText (Control.ControlCollection controls, string name) {
 			if (!(controls[$"_{name}Panel"].Controls[0] is TextBox textBox)) {
@@ -114,6 +125,8 @@ namespace Handsome.Prefabs {
 
 			return text;
 		}
+
+		#endregion
 
 	}
 

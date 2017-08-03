@@ -13,26 +13,20 @@ namespace Handsome.Prefabs {
 		public ControlClient (Client client) {
 			InitializeComponent();
 
-			AssembleValue(client);
-			AssembleCard(client);
-			AssembleButton();
-
 			_client = client;
+
+			AssembleValue();
+			AssembleCard();
+			AssembleButton();
 		}
 
-		private void AssembleValue (Client client) {
-			float totalValue = 0;
-
-			foreach (Entry entry in client.Entries) {
-				totalValue += entry.Value;
-			}
-
-			_clientValue.Rtf = RtfFactory.BuildValue(Row.Format(totalValue));
+		private void AssembleValue () {
+			UpdateValue();
 			_clientValue.MouseDown += RemoveFocus;
 		}
 
-		private void AssembleCard (Client client) {
-			_clientCard.Rtf = RtfFactory.BuildClientCard(client);
+		private void AssembleCard () {
+			_clientCard.Rtf = RtfFactory.BuildClientCard(_client);
 			_clientCard.MouseDown += RemoveFocus;
 		}
 
@@ -46,11 +40,25 @@ namespace Handsome.Prefabs {
 
 		private void OpenFormClient (object sender, EventArgs e) {
 			FormClient clientForm = new FormClient(_client);
+			clientForm.FormClosed += UpdateValue;
+
 			clientForm.Show();
 		}
 
 		private void RemoveFocus (object sender, EventArgs e) {
 			ActiveControl = _mainPanel;
+		}
+
+		private void UpdateValue (object sender, EventArgs e) {
+			UpdateValue();
+		}
+
+		#endregion
+
+		#region Helpers
+
+		private void UpdateValue () {
+			_clientValue.Rtf = RtfFactory.BuildValue(Row.Format(_client.GetMostRecentEntry().Value));
 		}
 
 		#endregion

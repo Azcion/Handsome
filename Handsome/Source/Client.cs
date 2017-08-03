@@ -11,7 +11,6 @@ namespace Handsome.Source {
 		public readonly string Address;
 		public readonly string VatID;
 		public readonly string Phone;
-
 		public readonly List<Entry> Entries;
 
 		public Client (string name, string owner="", string address="", string vatid="", string phone="") {
@@ -22,6 +21,10 @@ namespace Handsome.Source {
 			Phone = phone;
 
 			Entries = new List<Entry>();
+		}
+
+		public Entry GetMostRecentEntry () {
+			return Entries[Entries.Count - 1];
 		}
 
 	}

@@ -21,7 +21,7 @@ namespace Handsome.Prefabs {
 			AssembleClientCard();
 			InsertEntries();
 
-			FormClosing += AskIfCloseData;
+			FormClosing += AskIfSaveData;
 			ActiveControl = _mainPanel;
 		}
 
@@ -68,7 +68,7 @@ namespace Handsome.Prefabs {
 
 		#region Event handlers
 
-		private void AskIfCloseData (object sender, CancelEventArgs e) {
+		private void AskIfSaveData (object sender, CancelEventArgs e) {
 			if (_didChange == false) {
 				return;
 			}
@@ -92,7 +92,10 @@ namespace Handsome.Prefabs {
 
 				switch (answer) {
 					case DialogResult.Yes:
-						Json.Save(Json.Serialize(_client), _client.Name, Json.Type.Client);
+						Data.ShouldSave = true;
+						break;
+					case DialogResult.No:
+						Data.ShouldSave = false;
 						break;
 					case DialogResult.Cancel:
 						e.Cancel = true;

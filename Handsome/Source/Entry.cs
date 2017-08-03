@@ -10,10 +10,18 @@ namespace Handsome.Source {
 		public readonly float Value;
 		public readonly List<Row> Data;
 
+		private readonly DateTime _date;
+
 		public Entry (string date, List<Row> data) {
 			Date = date;
 			Data = data;
 			Value = SumValues(data);
+
+			_date = DateTime.ParseExact(date, "d.M.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+		}
+
+		public int Compare (Entry other) {
+			return DateTime.Compare(_date, other._date);
 		}
 
 		private static float SumValues (IEnumerable<Row> data) {
