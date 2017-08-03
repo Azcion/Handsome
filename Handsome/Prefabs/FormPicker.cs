@@ -94,9 +94,10 @@ namespace Handsome.Prefabs {
 
 			Client client = new Client(name, owner, address, vat, $"{phone0} | {phone1}");
 			Data.Clients.Add(client);
+			Data.ShouldSave = true;
 			InsertClient(client);
 			ResetAdder();
-
+			
 			ActiveControl = _mainPanel;
 		}
 
