@@ -34,6 +34,14 @@ namespace Handsome.Source {
 			return entry;
 		}
 
+		public void OverwriteEntries (List<Entry> entries) {
+			Entries.Clear();
+
+			foreach (Entry entry in entries) {
+				Entries.Add(entry);
+			}
+		}
+
 	}
 
 }

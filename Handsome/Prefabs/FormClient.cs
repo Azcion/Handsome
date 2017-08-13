@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Handsome.Source;
 
@@ -8,6 +9,8 @@ namespace Handsome.Prefabs {
 
 		private readonly Client _client;
 
+		private List<Entry> _entries;
+
 		private bool _didChange;
 		private bool _didFail;
 
@@ -15,6 +18,7 @@ namespace Handsome.Prefabs {
 			InitializeComponent();
 
 			_client = client;
+			_entries = new List<Entry>(client.Entries);
 			
 			AssembleClientCard();
 			InsertEntries();
@@ -27,17 +31,17 @@ namespace Handsome.Prefabs {
 			_didChange = true;
 			_didFail = didFail;
 
-			for (var i = 0; i < _client.Entries.Count; ++i) {
-				Entry entry = _client.Entries[i];
+			for (var i = 0; i < _entries.Count; ++i) {
+				Entry entry = _entries[i];
 
 				if (entry.Date == updatedEntry.Date) {
-					_client.Entries[i] = updatedEntry;
+					_entries[i] = updatedEntry;
 
 					return;
 				}
 			}
 
-			_client.Entries.Add(updatedEntry);
+			_entries.Add(updatedEntry);
 
 			Control clientCard = _mainPanel.Controls["_clientCard"];
 
@@ -52,7 +56,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void InsertEntries () {
-			foreach (Entry entry in _client.Entries) {
+			foreach (Entry entry in _entries) {
 				_mainPanel.Controls.Add(new ControlEntry(entry));
 			}
 
@@ -86,6 +90,7 @@ namespace Handsome.Prefabs {
 				switch (answer) {
 					case DialogResult.Yes:
 						Data.ShouldSave = true;
+						_client.OverwriteEntries(_entries);
 						break;
 					case DialogResult.No:
 						Data.ShouldSave = false;
