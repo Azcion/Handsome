@@ -96,7 +96,7 @@ namespace Handsome.Prefabs {
 			List<Row> data = new List<Row>();
 			bool didFail = false;
 
-			for (var i = 0; i < dataGrid.Rows.Count - 1; i++) {
+			for (var i = 0; i < dataGrid.RowCount - 1; i++) {
 				DataGridViewRow row = dataGrid.Rows[i];
 				DataGridViewCell quantityCell = row.Cells[0];
 				DataGridViewCell nameCell = row.Cells[1];
@@ -128,6 +128,33 @@ namespace Handsome.Prefabs {
 				if (didFail == false) {
 					data.Add(new Row(quantity, nameCell.Value?.ToString(), price));
 				}
+			}
+
+			// Last row
+			DataGridViewCellCollection cells = dataGrid.Rows[dataGrid.RowCount - 1].Cells;
+			int failCount = 0;
+
+			if (int.TryParse(cells[0].Value?.ToString(), out int lastCellQuantity) == false) {
+				lastCellQuantity = 0;
+				++failCount;
+			}
+
+			if (float.TryParse(cells[2].Value?.ToString().Replace(',', '.'), out float lastCellPrice) == false) {
+				lastCellPrice = 0;
+				++failCount;
+			}
+
+			string lastCellName = "";
+
+			if (cells[1].Value == null) {
+				++failCount;
+			} else {
+				lastCellName = cells[1].Value.ToString();
+			}
+
+			// Add last cell without style change if it's not empty
+			if (failCount < 3) {
+				data.Add(new Row(lastCellQuantity, lastCellName, lastCellPrice));
 			}
 
 			//todo create history entry if older date
