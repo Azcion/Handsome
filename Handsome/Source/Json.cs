@@ -40,10 +40,15 @@ namespace Handsome.Source {
 				return null;
 			}
 
-			files.Sort((x, y) =>  -x.LastWriteTime.CompareTo(y.LastWriteTime));
-			string name = files[0].Name;
+			files.Sort((x, y) => -x.LastWriteTime.CompareTo(y.LastWriteTime));
 
-			return File.ReadAllText(path + name);
+			foreach (FileInfo file in files) {
+				if (file.Name.StartsWith("Data.")) {
+					return File.ReadAllText(path + file.Name);
+				}
+			}
+
+			return null;
 		}
 
 	}
