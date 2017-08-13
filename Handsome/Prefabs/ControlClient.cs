@@ -21,19 +21,18 @@ namespace Handsome.Prefabs {
 		}
 
 		private void AssembleValue () {
-			UpdateValue();
-			_clientValue.MouseDown += RemoveFocus;
+			UpdateValue(null, null);
+			_clientValue.Enabled = false;
 		}
 
 		private void AssembleCard () {
 			_clientCard.Rtf = RtfFactory.BuildClientCard(_client);
-			_clientCard.MouseDown += RemoveFocus;
+			_clientCard.Enabled = false;
 		}
 
 		private void AssembleButton () {
 			_button.BackColor = Green;
 			_button.Click += OpenFormClient;
-			_button.MouseUp += RemoveFocus;
 		}
 
 		#region Event handlers
@@ -45,19 +44,7 @@ namespace Handsome.Prefabs {
 			clientForm.Show();
 		}
 
-		private void RemoveFocus (object sender, EventArgs e) {
-			ActiveControl = _mainPanel;
-		}
-
 		private void UpdateValue (object sender, EventArgs e) {
-			UpdateValue();
-		}
-
-		#endregion
-
-		#region Helpers
-
-		private void UpdateValue () {
 			_clientValue.Rtf = RtfFactory.BuildValue(Row.Format(_client.GetMostRecentEntry().Value));
 		}
 
