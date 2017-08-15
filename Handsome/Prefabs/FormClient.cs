@@ -8,11 +8,12 @@ namespace Handsome.Prefabs {
 	internal partial class FormClient {
 
 		private readonly Client _client;
-
-		private List<Entry> _entries;
+		private readonly List<Entry> _entries;
 
 		private bool _didChange;
 		private bool _didFail;
+
+		private DateTimePicker _date;
 
 		public FormClient (Client client) {
 			InitializeComponent();
@@ -22,6 +23,7 @@ namespace Handsome.Prefabs {
 			
 			AssembleClientCard();
 			InsertEntries();
+			AssembleDatePicker();
 
 			FormClosing += AskIfSaveData;
 			ActiveControl = _mainPanel;
@@ -49,6 +51,22 @@ namespace Handsome.Prefabs {
 			_mainPanel.Controls.Add(clientCard);
 
 			InsertEntries();
+
+			_mainPanel.Controls.Add(_date);
+		}
+
+		public string GetDate () {
+			return _date.Value.ToString("d.M.yyyy");
+		}
+
+		private void AssembleDatePicker () {
+			_date = new DateTimePicker();
+			Controls[0].Controls.Add(_date);
+			_date.ShowUpDown = true;
+			_date.CustomFormat = @"dd.MM.yyyy";
+			_date.Format = DateTimePickerFormat.Custom;
+			_date.Dock = DockStyle.Top;
+			_date.SendToBack();
 		}
 
 		private void AssembleClientCard () {
@@ -57,7 +75,7 @@ namespace Handsome.Prefabs {
 
 		private void InsertEntries () {
 			foreach (Entry entry in _entries) {
-				_mainPanel.Controls.Add(new ControlEntry(entry));
+				_mainPanel.Controls.Add(new ControlEntry(this, entry));
 			}
 
 			_clientCard.SendToBack();

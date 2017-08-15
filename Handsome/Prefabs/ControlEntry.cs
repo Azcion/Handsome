@@ -10,8 +10,12 @@ namespace Handsome.Prefabs {
 
 		private static readonly Color Green = Color.FromArgb(74, 202, 168);
 
-		public ControlEntry (Entry entry) {
+		private readonly FormClient _form;
+
+		public ControlEntry (FormClient form, Entry entry) {
 			InitializeComponent();
+
+			_form = form;
 
 			AssembleDateLabel(entry.Date);
 			AssembleDataGrid(entry.Data);
@@ -62,7 +66,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void RecreateEntry (List<Row> data, bool didFail) {
-			string date = DateTime.Today.ToString("d.M.yyyy");
+			string date = _form.GetDate();
 			_dateLabel.Rtf = RtfFactory.BuildDate(date);
 
 			FormClient parent = ParentForm as FormClient;
