@@ -28,13 +28,13 @@ namespace Handsome.Source {
 				return Entries[Entries.Count - 1];
 			}
 
-			Entry entry = new Entry(DateTime.Today.ToString("d.M.yyyy"), new List<Row>());
+			Entry entry = new Entry(DateTime.Today.ToString("d.M.yyyy"), false, new List<Row>());
 			Entries.Add(entry);
 
 			return entry;
 		}
 
-		public void OverwriteEntries (List<Entry> entries) {
+		public void OverwriteEntries (IEnumerable<Entry> entries) {
 			Entries.Clear();
 
 			foreach (Entry entry in entries) {

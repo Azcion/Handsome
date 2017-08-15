@@ -8,12 +8,14 @@ namespace Handsome.Source {
 
 		public readonly string Date;
 		public readonly float Value;
+		public readonly bool IsCheckout;
 		public readonly List<Row> Data;
 
 		private readonly DateTime _date;
 
-		public Entry (string date, List<Row> data) {
+		public Entry (string date, bool isCheckout, List<Row> data) {
 			Date = date;
+			IsCheckout = isCheckout;
 			Data = data;
 			Value = SumValues(data);
 

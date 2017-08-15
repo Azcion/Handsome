@@ -11,11 +11,13 @@ namespace Handsome.Prefabs {
 		private static readonly Color Green = Color.FromArgb(74, 202, 168);
 
 		private readonly FormClient _form;
+		private readonly bool _isCheckout;
 
 		public ControlEntry (FormClient form, Entry entry) {
 			InitializeComponent();
 
 			_form = form;
+			_isCheckout = entry.IsCheckout;
 
 			AssembleDateLabel(entry.Date);
 			AssembleDataGrid(entry.Data);
@@ -54,7 +56,7 @@ namespace Handsome.Prefabs {
 			_dataGrid.Columns[3].Name = "Vrednost";
 
 			foreach (Row row in data) {
-				int index = _dataGrid.Rows.Add(row.Stringify());
+				int index = _dataGrid.Rows.Add(row.ToObjectArray());
 				_dataGrid.Rows[index].Cells[3].ReadOnly = true;
 			}
 
@@ -70,7 +72,7 @@ namespace Handsome.Prefabs {
 			_dateLabel.Rtf = RtfFactory.BuildDate(date);
 
 			FormClient parent = ParentForm as FormClient;
-			parent?.UpdateEntries(new Entry(date, data), didFail);
+			parent?.UpdateEntries(new Entry(date, _isCheckout, data), didFail);
 		}
 
 		#region Event handlers
@@ -156,7 +158,7 @@ namespace Handsome.Prefabs {
 				lastCellName = cells[1].Value.ToString();
 			}
 
-			// Add last cell without style change if it's not empty
+			// Add last row without style change if it's not empty
 			if (failCount < 3) {
 				data.Add(new Row(lastCellQuantity, lastCellName, lastCellPrice));
 			}
