@@ -22,11 +22,10 @@ namespace Handsome.Prefabs {
 			_entries = new List<Entry>(client.Entries);
 			
 			AssembleClientCard();
-			InsertEntries();
 			AssembleDatePicker();
+			InsertEntries();
 
 			FormClosing += AskIfSaveData;
-			ActiveControl = _mainPanel;
 		}
 
 		public void UpdateEntries (Entry updatedEntry, bool didFail) {
@@ -44,15 +43,9 @@ namespace Handsome.Prefabs {
 			}
 
 			_entries.Add(updatedEntry);
-
-			Control clientCard = _mainPanel.Controls["_clientCard"];
-
-			_mainPanel.Controls.Clear();
-			_mainPanel.Controls.Add(clientCard);
+			_entriesPanel.Controls.Clear();
 
 			InsertEntries();
-
-			_mainPanel.Controls.Add(_date);
 		}
 
 		public string GetDate () {
@@ -61,12 +54,12 @@ namespace Handsome.Prefabs {
 
 		private void AssembleDatePicker () {
 			_date = new DateTimePicker();
-			Controls[0].Controls.Add(_date);
 			_date.ShowUpDown = true;
 			_date.CustomFormat = @"dd.MM.yyyy";
 			_date.Format = DateTimePickerFormat.Custom;
 			_date.Dock = DockStyle.Top;
 			_date.SendToBack();
+			_mainPanel.Controls.Add(_date);
 		}
 
 		private void AssembleClientCard () {
@@ -75,10 +68,8 @@ namespace Handsome.Prefabs {
 
 		private void InsertEntries () {
 			foreach (Entry entry in _entries) {
-				_mainPanel.Controls.Add(new ControlEntry(this, entry));
+				_entriesPanel.Controls.Add(new ControlEntry(this, entry));
 			}
-
-			_clientCard.SendToBack();
 		}
 
 		#region Event handlers
