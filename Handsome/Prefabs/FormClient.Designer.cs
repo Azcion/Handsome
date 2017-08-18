@@ -36,10 +36,10 @@ namespace Handsome.Prefabs {
 			//
 			// _entriesPanel
 			//
-			this._entriesPanel.AutoScroll = true;
 			this._entriesPanel.BackColor = Color.DeepPink;
-			this._entriesPanel.Dock = DockStyle.Fill;
+			this._entriesPanel.Dock = DockStyle.Top;
 			this._entriesPanel.Name = "_entriesPanel";
+			this._entriesPanel.AutoSize = true;
 			//todo
 			// 
 			// _clientCard
