@@ -23,6 +23,7 @@ namespace Handsome.Prefabs {
 			AssembleDataGrid(entry.Data);
 
 			Dock = DockStyle.Top;
+			AutoSize = true;
 			ResizeGrid(null, null);
 		}
 
