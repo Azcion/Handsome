@@ -16,6 +16,8 @@ namespace Handsome.Prefabs {
 			InsertClientAdder();
 			InsertAdderButton();
 
+			Select();
+
 			FormClosing += SaveData;
 			ActiveControl = _mainPanel;
 		}

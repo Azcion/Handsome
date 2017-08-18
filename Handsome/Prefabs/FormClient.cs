@@ -26,6 +26,7 @@ namespace Handsome.Prefabs {
 			InsertEntries();
 
 			FormClosing += AskIfSaveData;
+			Select();
 		}
 
 		public void UpdateEntries (Entry updatedEntry, bool didFail) {
