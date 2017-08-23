@@ -116,7 +116,6 @@ namespace Handsome.Prefabs {
 			// 
 			this._dateLabel.Anchor = AnchorStyles.Top;
 			this._dateLabel.BorderStyle = BorderStyle.None;
-			this._dateLabel.Enabled = false;
 			this._dateLabel.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
 			this._dateLabel.Location = new Point(175, 0);
 			this._dateLabel.Name = "_dateLabel";

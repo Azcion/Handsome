@@ -29,7 +29,14 @@ namespace Handsome.Prefabs {
 			Select();
 		}
 
-		public void UpdateData (List<Row> data, bool didFail, int id) {
+		public void UpdateDate (string date, int id) {
+			_didChange = true;
+			Entry old = _entries[id];
+			Entry entry = new Entry(date, old.IsCheckout, old.Data);
+			_entries[id] = entry;
+		}
+
+		public void UpdateData (List<Row> data, string date, bool didFail, int id) {
 			_didChange = true;
 			_didFail = didFail;
 
@@ -37,8 +44,7 @@ namespace Handsome.Prefabs {
 				return;
 			}
 
-			Entry old = _entries[id];
-			Entry entry = new Entry(old.Date, old.IsCheckout, data);
+			Entry entry = new Entry(date, _entries[id].IsCheckout, data);
 			_entries[id] = entry;
 		}
 

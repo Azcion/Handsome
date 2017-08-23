@@ -48,6 +48,8 @@ namespace Handsome.Prefabs {
 			_checkOutLabel.Text = entry.IsCheckout ? "Odjava" : "";
 			_dateLabel.Text = entry.Date;
 			_valueLabel.Text = Row.Format(entry.Value);
+
+			_dateLabel.TextChanged += DateChanged;
 		}
 
 		private void AssembleDataGrid (IEnumerable<Row> data) {
@@ -77,6 +79,10 @@ namespace Handsome.Prefabs {
 			int h = _dataGrid.ColumnHeadersHeight + _checkOutLabel.Height;
 			h += _dataGrid.RowCount * _dataGrid.RowTemplate.Height;
 			_entryPanel.Height = h + gapSize;
+		}
+
+		private void DateChanged (object sender, EventArgs e) {
+			_form.UpdateDate(_dateLabel.Text, _id);
 		}
 
 		private void UpdateGrid (object sender, EventArgs e) {
@@ -122,7 +128,7 @@ namespace Handsome.Prefabs {
 				}
 			}
 
-			_form.UpdateData(data, didFail, _id);
+			_form.UpdateData(data, _dateLabel.Text, didFail, _id);
 		}
 
 		#endregion
