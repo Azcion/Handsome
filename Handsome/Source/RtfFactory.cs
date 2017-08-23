@@ -35,19 +35,6 @@
 				+ @"}";
 		}
 
-		public static string BuildDate (string date) {
-			return ""
-				+ @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033"
-				+	@"{\fonttbl"
-				+		@"{\f0\fnil\fcharset238 Calibri;}"
-				+	@"}"
-				+	@"{\colortbl ;\red102\green102\blue102;\red165\green165\blue165;}"
-				+	@"{\*\generator Riched20 10.0.15063}"
-				+	@"\viewkind4\uc1 "
-				+	@"\pard\sa200\sl276\slmult1\cf1\b\f0\fs40\lang9 " + "\t" + date + @"\cf2\par"
-				+ @"}";
-		}
-
 		public static string BuildValue (string value) {
 			return ""
 				+ @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033"

@@ -29,36 +29,27 @@ namespace Handsome.Prefabs {
 			Select();
 		}
 
-		public void UpdateEntries (Entry updatedEntry, bool didFail) {
+		public void UpdateData (List<Row> data, bool didFail, int id) {
 			_didChange = true;
 			_didFail = didFail;
 
-			for (var i = 0; i < _entries.Count; ++i) {
-				Entry entry = _entries[i];
-
-				if (entry.Date == updatedEntry.Date) {
-					_entries[i] = updatedEntry;
-
-					return;
-				}
+			if (didFail) {
+				return;
 			}
 
-			_entries.Add(updatedEntry);
-			_entriesPanel.Controls.Clear();
-
-			InsertEntries();
-		}
-
-		public string GetDate () {
-			return _date.Value.ToString("d.M.yyyy");
+			Entry old = _entries[id];
+			Entry entry = new Entry(old.Date, old.IsCheckout, data);
+			_entries[id] = entry;
 		}
 
 		private void AssembleDatePicker () {
-			_date = new DateTimePicker();
-			_date.ShowUpDown = true;
-			_date.CustomFormat = @"dd.MM.yyyy";
-			_date.Format = DateTimePickerFormat.Custom;
-			_date.Dock = DockStyle.Top;
+			_date = new DateTimePicker {
+				ShowUpDown = true,
+				CustomFormat = @"dd.MM.yyyy",
+				Format = DateTimePickerFormat.Custom,
+				Dock = DockStyle.Top
+			};
+
 			_date.SendToBack();
 			_mainPanel.Controls.Add(_date);
 		}
@@ -68,8 +59,9 @@ namespace Handsome.Prefabs {
 		}
 
 		private void InsertEntries () {
-			foreach (Entry entry in _entries) {
-				_entriesPanel.Controls.Add(new ControlEntry(this, entry));
+			for (var i = 0; i < _entries.Count; i++) {
+				Entry entry = _entries[i];
+				_entriesPanel.Controls.Add(new ControlEntry(this, entry, i));
 			}
 		}
 
