@@ -45,7 +45,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void UpdateValue (object sender, EventArgs e) {
-			_clientValue.Rtf = RtfFactory.BuildValue(Row.Format(_client.GetMostRecentEntry().Value));
+			_clientValue.Rtf = RtfFactory.BuildValue(Row.Format(_client.GetMostRecentEntry(false).Value));
 		}
 
 		#endregion
