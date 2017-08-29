@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Handsome.Source;
@@ -13,7 +14,7 @@ namespace Handsome.Prefabs {
 		private bool _didChange;
 		private bool _didFail;
 
-		private DateTimePicker _date;
+		private ControlAdderButton _controlAdderButton;
 
 		public FormClient (Client client) {
 			InitializeComponent();
@@ -22,7 +23,7 @@ namespace Handsome.Prefabs {
 			_entries = new List<Entry>(client.Entries);
 			
 			AssembleClientCard();
-			AssembleDatePicker();
+			InsertAdderButton();
 			InsertEntries();
 
 			FormClosing += AskIfSaveData;
@@ -48,20 +49,21 @@ namespace Handsome.Prefabs {
 			_entries[id] = entry;
 		}
 
-		private void AssembleDatePicker () {
-			_date = new DateTimePicker {
-				ShowUpDown = true,
-				CustomFormat = @"dd.MM.yyyy",
-				Format = DateTimePickerFormat.Custom,
+		private void AssembleClientCard () {
+			_clientCard.Rtf = RtfFactory.BuildClientCardLarge(_client);
+		}
+
+		private void InsertAdderButton () {
+			_controlAdderButton = new ControlAdderButton {
 				Dock = DockStyle.Top
 			};
 
-			_date.SendToBack();
-			_mainPanel.Controls.Add(_date);
-		}
+			if (_controlAdderButton.Controls[0].Controls["_button"] is Button control) {
+				control.Click += InsertNewEntry;
+			}
 
-		private void AssembleClientCard () {
-			_clientCard.Rtf = RtfFactory.BuildClientCardLarge(_client);
+			_mainPanel.Controls.Add(_controlAdderButton);
+			_clientCard.SendToBack();
 		}
 
 		private void InsertEntries () {
@@ -107,6 +109,22 @@ namespace Handsome.Prefabs {
 						e.Cancel = true;
 						break;
 				}
+			}
+		}
+
+		private void InsertNewEntry (object sender, EventArgs e) {
+			_didChange = true;
+			int index = _entriesPanel.Controls.Count;
+			
+			if (_entriesPanel.Controls[index - 1] is ControlEntry ce) {
+				string date = DateTime.Today.ToString("d.M.yyyy");
+				bool isCheckout = !ce.IsCheckout;
+				List<Row> data = new List<Row>();
+
+				Entry entry = new Entry(date, isCheckout, data);
+				_entriesPanel.Controls.Add(new ControlEntry(this, entry, index));
+			} else {
+				_didFail = true;
 			}
 		}
 

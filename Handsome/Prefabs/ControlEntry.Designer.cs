@@ -8,7 +8,7 @@ namespace Handsome.Prefabs {
 		private Panel _labelsPanel;
 		private TextBox _valueLabel;
 		private TextBox _dateLabel;
-		private TextBox _checkOutLabel;
+		private TextBox _checkoutLabel;
 		private Panel _entryPanel;
 		private DataGridView _dataGrid;
 
@@ -37,7 +37,7 @@ namespace Handsome.Prefabs {
 			this._dataGrid = new DataGridView();
 			this._labelsPanel = new Panel();
 			this._dateLabel = new TextBox();
-			this._checkOutLabel = new TextBox();
+			this._checkoutLabel = new TextBox();
 			this._valueLabel = new TextBox();
 			this._entryPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this._dataGrid)).BeginInit();
@@ -105,7 +105,7 @@ namespace Handsome.Prefabs {
 			// _labelsPanel
 			// 
 			this._labelsPanel.Controls.Add(this._dateLabel);
-			this._labelsPanel.Controls.Add(this._checkOutLabel);
+			this._labelsPanel.Controls.Add(this._checkoutLabel);
 			this._labelsPanel.Controls.Add(this._valueLabel);
 			this._labelsPanel.Dock = DockStyle.Top;
 			this._labelsPanel.Location = new Point(0, 0);
@@ -123,17 +123,17 @@ namespace Handsome.Prefabs {
 			this._dateLabel.Text = "Date";
 			this._dateLabel.TextAlign = HorizontalAlignment.Center;
 			// 
-			// _checkOutLabel
+			// _checkoutLabel
 			// 
-			this._checkOutLabel.BorderStyle = BorderStyle.None;
-			this._checkOutLabel.Dock = DockStyle.Left;
-			this._checkOutLabel.Enabled = false;
-			this._checkOutLabel.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
-			this._checkOutLabel.Location = new Point(0, 0);
-			this._checkOutLabel.Name = "_checkOutLabel";
-			this._checkOutLabel.Size = new Size(150, 29);
-			this._checkOutLabel.Text = "CheckOut";
-			this._checkOutLabel.TextAlign = HorizontalAlignment.Center;
+			this._checkoutLabel.BorderStyle = BorderStyle.None;
+			this._checkoutLabel.Dock = DockStyle.Left;
+			this._checkoutLabel.Enabled = false;
+			this._checkoutLabel.Font = new Font("Open Sans", 15.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+			this._checkoutLabel.Location = new Point(0, 0);
+			this._checkoutLabel.Name = "_checkoutLabel";
+			this._checkoutLabel.Size = new Size(150, 29);
+			this._checkoutLabel.Text = "CheckOut";
+			this._checkoutLabel.TextAlign = HorizontalAlignment.Center;
 			// 
 			// _valueLabel
 			// 

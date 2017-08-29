@@ -8,16 +8,19 @@ namespace Handsome.Prefabs {
 
 	internal sealed partial class ControlEntry {
 
+		public readonly bool IsCheckout;
+
 		private static readonly Color Green = Color.FromArgb(74, 202, 168);
 
 		private readonly int _id;
 		private readonly FormClient _form;
-
+		
 		public ControlEntry (FormClient form, Entry entry, int id) {
 			InitializeComponent();
 
 			_id = id;
 			_form = form;
+			IsCheckout = entry.IsCheckout;
 
 			AssembleLabels(entry);
 			AssembleDataGrid(entry.Data);
@@ -45,7 +48,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void AssembleLabels (Entry entry) {
-			_checkOutLabel.Text = entry.IsCheckout ? "Odjava" : "";
+			_checkoutLabel.Text = entry.IsCheckout ? "Odjava" : "";
 			_dateLabel.Text = entry.Date;
 			_valueLabel.Text = Row.Format(entry.Value);
 
@@ -76,7 +79,7 @@ namespace Handsome.Prefabs {
 
 		private void ResizeGrid (object sender, EventArgs e) {
 			const int gapSize = 10;
-			int h = _dataGrid.ColumnHeadersHeight + _checkOutLabel.Height;
+			int h = _dataGrid.ColumnHeadersHeight + _checkoutLabel.Height;
 			h += _dataGrid.RowCount * _dataGrid.RowTemplate.Height;
 			_entryPanel.Height = h + gapSize;
 		}
