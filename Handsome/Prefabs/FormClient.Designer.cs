@@ -6,6 +6,7 @@ namespace Handsome.Prefabs {
 	partial class FormClient : Form {
 
 		private RichTextBox _clientCard;
+		private Panel _entriesPanel;
 		private Panel _mainPanel;
 
 		/// <summary>
@@ -26,10 +27,20 @@ namespace Handsome.Prefabs {
 		}
 
 		private void InitializeComponent () {
+			this._entriesPanel = new Panel();
+			this._entriesPanel.SuspendLayout();
 			this._clientCard = new RichTextBox();
 			this._mainPanel = new Panel();
 			this._mainPanel.SuspendLayout();
 			this.SuspendLayout();
+			//
+			// _entriesPanel
+			//
+			this._entriesPanel.BackColor = Color.DeepPink;
+			this._entriesPanel.Dock = DockStyle.Top;
+			this._entriesPanel.Name = "_entriesPanel";
+			this._entriesPanel.AutoSize = true;
+			//todo
 			// 
 			// _clientCard
 			// 
@@ -48,6 +59,7 @@ namespace Handsome.Prefabs {
 			// 
 			this._mainPanel.AutoScroll = true;
 			this._mainPanel.BackColor = Color.GhostWhite;
+			this._mainPanel.Controls.Add(this._entriesPanel);
 			this._mainPanel.Controls.Add(this._clientCard);
 			this._mainPanel.Dock = DockStyle.Fill;
 			this._mainPanel.Location = new Point(0, 0);
@@ -63,6 +75,7 @@ namespace Handsome.Prefabs {
 			this.Controls.Add(this._mainPanel);
 			this.Name = "FormClient";
 			this.Text = "FormClient";
+			this._entriesPanel.ResumeLayout();
 			this._mainPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 

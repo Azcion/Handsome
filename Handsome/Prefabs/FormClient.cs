@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Handsome.Source;
@@ -13,7 +14,7 @@ namespace Handsome.Prefabs {
 		private bool _didChange;
 		private bool _didFail;
 
-		private DateTimePicker _date;
+		private ControlAdderButton _controlAdderButton;
 
 		public FormClient (Client client) {
 			InitializeComponent();
@@ -22,63 +23,54 @@ namespace Handsome.Prefabs {
 			_entries = new List<Entry>(client.Entries);
 			
 			AssembleClientCard();
+			InsertAdderButton();
 			InsertEntries();
-			AssembleDatePicker();
 
 			FormClosing += AskIfSaveData;
-			ActiveControl = _mainPanel;
+			Select();
 		}
 
-		public void UpdateEntries (Entry updatedEntry, bool didFail) {
+		public void UpdateDate (string date, int id) {
+			_didChange = true;
+			Entry old = _entries[id];
+			Entry entry = new Entry(date, old.IsCheckout, old.Data);
+			_entries[id] = entry;
+		}
+
+		public void UpdateData (List<Row> data, string date, bool didFail, int id) {
 			_didChange = true;
 			_didFail = didFail;
 
-			for (var i = 0; i < _entries.Count; ++i) {
-				Entry entry = _entries[i];
-
-				if (entry.Date == updatedEntry.Date) {
-					_entries[i] = updatedEntry;
-
-					return;
-				}
+			if (didFail) {
+				return;
 			}
 
-			_entries.Add(updatedEntry);
-
-			Control clientCard = _mainPanel.Controls["_clientCard"];
-
-			_mainPanel.Controls.Clear();
-			_mainPanel.Controls.Add(clientCard);
-
-			InsertEntries();
-
-			_mainPanel.Controls.Add(_date);
-		}
-
-		public string GetDate () {
-			return _date.Value.ToString("d.M.yyyy");
-		}
-
-		private void AssembleDatePicker () {
-			_date = new DateTimePicker();
-			Controls[0].Controls.Add(_date);
-			_date.ShowUpDown = true;
-			_date.CustomFormat = @"dd.MM.yyyy";
-			_date.Format = DateTimePickerFormat.Custom;
-			_date.Dock = DockStyle.Top;
-			_date.SendToBack();
+			Entry entry = new Entry(date, _entries[id].IsCheckout, data);
+			_entries[id] = entry;
 		}
 
 		private void AssembleClientCard () {
 			_clientCard.Rtf = RtfFactory.BuildClientCardLarge(_client);
 		}
 
-		private void InsertEntries () {
-			foreach (Entry entry in _entries) {
-				_mainPanel.Controls.Add(new ControlEntry(this, entry));
+		private void InsertAdderButton () {
+			_controlAdderButton = new ControlAdderButton {
+				Dock = DockStyle.Top
+			};
+
+			if (_controlAdderButton.Controls[0].Controls["_button"] is Button control) {
+				control.Click += InsertNewEntry;
 			}
 
+			_mainPanel.Controls.Add(_controlAdderButton);
 			_clientCard.SendToBack();
+		}
+
+		private void InsertEntries () {
+			for (var i = 0; i < _entries.Count; i++) {
+				Entry entry = _entries[i];
+				_entriesPanel.Controls.Add(new ControlEntry(this, entry, i));
+			}
 		}
 
 		#region Event handlers
@@ -117,6 +109,23 @@ namespace Handsome.Prefabs {
 						e.Cancel = true;
 						break;
 				}
+			}
+		}
+
+		private void InsertNewEntry (object sender, EventArgs e) {
+			_didChange = true;
+			int index = _entriesPanel.Controls.Count;
+			
+			if (_entriesPanel.Controls[index - 1] is ControlEntry ce) {
+				string date = DateTime.Today.ToString("d.M.yyyy");
+				bool isCheckout = !ce.IsCheckout;
+				List<Row> data = new List<Row>();
+
+				Entry entry = new Entry(date, isCheckout, data);
+				_entries.Add(entry);
+				_entriesPanel.Controls.Add(new ControlEntry(this, entry, index));
+			} else {
+				_didFail = true;
 			}
 		}
 

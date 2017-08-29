@@ -17,7 +17,7 @@ namespace Handsome.Source {
 			Value = (float) Math.Round(quantity * price, 2);
 		}
 
-		public object[] Stringify () {
+		public object[] ToObjectArray () {
 			return new object[] {Quantity.ToString(), Name, Format(Price), Format(Value)};
 		}
 

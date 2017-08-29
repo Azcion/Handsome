@@ -23,18 +23,26 @@ namespace Handsome.Source {
 			Entries = new List<Entry>();
 		}
 
-		public Entry GetMostRecentEntry () {
+		public Entry GetMostRecentEntry (bool includeCheckouts=true) {
+			int lastIndex = Entries.Count - 1;
+
 			if (Entries.Count != 0) {
-				return Entries[Entries.Count - 1];
+				Entry last = Entries[lastIndex];
+
+				if (includeCheckouts == false && last.IsCheckout) {
+					return Entries[lastIndex - 1];
+				}
+
+				return last;
 			}
 
-			Entry entry = new Entry(DateTime.Today.ToString("d.M.yyyy"), new List<Row>());
+			Entry entry = new Entry(DateTime.Today.ToString("d.M.yyyy"), false, new List<Row>());
 			Entries.Add(entry);
 
 			return entry;
 		}
 
-		public void OverwriteEntries (List<Entry> entries) {
+		public void OverwriteEntries (IEnumerable<Entry> entries) {
 			Entries.Clear();
 
 			foreach (Entry entry in entries) {

@@ -8,19 +8,25 @@ namespace Handsome.Prefabs {
 
 	internal sealed partial class ControlEntry {
 
+		public readonly bool IsCheckout;
+
 		private static readonly Color Green = Color.FromArgb(74, 202, 168);
 
+		private readonly int _id;
 		private readonly FormClient _form;
-
-		public ControlEntry (FormClient form, Entry entry) {
+		
+		public ControlEntry (FormClient form, Entry entry, int id) {
 			InitializeComponent();
 
+			_id = id;
 			_form = form;
+			IsCheckout = entry.IsCheckout;
 
-			AssembleDateLabel(entry.Date);
+			AssembleLabels(entry);
 			AssembleDataGrid(entry.Data);
 
 			Dock = DockStyle.Top;
+			AutoSize = true;
 			ResizeGrid(null, null);
 		}
 
@@ -41,9 +47,12 @@ namespace Handsome.Prefabs {
 			cell.Style.ForeColor = Color.White;
 		}
 
-		private void AssembleDateLabel (string date) {
-			_dateLabel.Rtf = RtfFactory.BuildDate(date);
-			_dateLabel.GotFocus += RemoveFocus;
+		private void AssembleLabels (Entry entry) {
+			_checkoutLabel.Text = entry.IsCheckout ? "Odjava" : "";
+			_dateLabel.Text = entry.Date;
+			_valueLabel.Text = Row.Format(entry.Value);
+
+			_dateLabel.TextChanged += DateChanged;
 		}
 
 		private void AssembleDataGrid (IEnumerable<Row> data) {
@@ -54,7 +63,7 @@ namespace Handsome.Prefabs {
 			_dataGrid.Columns[3].Name = "Vrednost";
 
 			foreach (Row row in data) {
-				int index = _dataGrid.Rows.Add(row.Stringify());
+				int index = _dataGrid.Rows.Add(row.ToObjectArray());
 				_dataGrid.Rows[index].Cells[3].ReadOnly = true;
 			}
 
@@ -63,42 +72,30 @@ namespace Handsome.Prefabs {
 			ResizeGrid(null, null);
 			_dataGrid.UserAddedRow += ResizeGrid;
 			_dataGrid.CellValueChanged += UpdateGrid;
-		}
-
-		private void RecreateEntry (List<Row> data, bool didFail) {
-			string date = _form.GetDate();
-			_dateLabel.Rtf = RtfFactory.BuildDate(date);
-
-			FormClient parent = ParentForm as FormClient;
-			parent?.UpdateEntries(new Entry(date, data), didFail);
+			_dataGrid.RowsRemoved += UpdateGrid;
 		}
 
 		#region Event handlers
 
-		private void RemoveFocus (object sender, EventArgs e) {
-			ActiveControl = null;
+		private void ResizeGrid (object sender, EventArgs e) {
+			const int gapSize = 10;
+			int h = _dataGrid.ColumnHeadersHeight + _checkoutLabel.Height;
+			h += _dataGrid.RowCount * _dataGrid.RowTemplate.Height;
+			_entryPanel.Height = h + gapSize;
 		}
 
-		private void ResizeGrid (object sender, EventArgs e) {
-			int h = _dataGrid.ColumnHeadersHeight + _dateLabel.Height;
-			h += _dataGrid.RowCount * _dataGrid.RowTemplate.Height;
-
-			if (_dataGrid.RowCount < 8) {
-				h += 4;
-			}
-
-			_entryPanel.Height = h;
+		private void DateChanged (object sender, EventArgs e) {
+			_form.UpdateDate(_dateLabel.Text, _id);
 		}
 
 		private void UpdateGrid (object sender, EventArgs e) {
 			DataGridView dataGrid = sender as DataGridView;
+			bool didFail = false;
+			List<Row> data = new List<Row>();
 
 			if (dataGrid == null) {
 				return;
 			}
-
-			List<Row> data = new List<Row>();
-			bool didFail = false;
 
 			for (var i = 0; i < dataGrid.RowCount - 1; i++) {
 				DataGridViewRow row = dataGrid.Rows[i];
@@ -123,47 +120,18 @@ namespace Handsome.Prefabs {
 				row.Cells[3].Value = Row.Format(quantity * price);
 
 				if (nameCell.Value == null) {
-					SetStyle(ref nameCell);
 					didFail = true;
+					SetStyle(ref nameCell);
 				} else {
 					SetStyle(ref nameCell, true);
 				}
 
 				if (didFail == false) {
-					data.Add(new Row(quantity, nameCell.Value?.ToString(), price));
+					data.Add(new Row(quantity, nameCell.Value.ToString(), price));
 				}
 			}
 
-			// Last row
-			DataGridViewCellCollection cells = dataGrid.Rows[dataGrid.RowCount - 1].Cells;
-			int failCount = 0;
-
-			if (int.TryParse(cells[0].Value?.ToString(), out int lastCellQuantity) == false) {
-				lastCellQuantity = 0;
-				++failCount;
-			}
-
-			if (float.TryParse(cells[2].Value?.ToString().Replace(',', '.'), out float lastCellPrice) == false) {
-				lastCellPrice = 0;
-				++failCount;
-			}
-
-			string lastCellName = "";
-
-			if (cells[1].Value == null) {
-				++failCount;
-			} else {
-				lastCellName = cells[1].Value.ToString();
-			}
-
-			// Add last cell without style change if it's not empty
-			if (failCount < 3) {
-				data.Add(new Row(lastCellQuantity, lastCellName, lastCellPrice));
-			}
-
-			//todo create history entry if older date
-
-			RecreateEntry(data, didFail);
+			_form.UpdateData(data, _dateLabel.Text, didFail, _id);
 		}
 
 		#endregion
