@@ -122,6 +122,7 @@ namespace Handsome.Prefabs {
 				List<Row> data = new List<Row>();
 
 				Entry entry = new Entry(date, isCheckout, data);
+				_entries.Add(entry);
 				_entriesPanel.Controls.Add(new ControlEntry(this, entry, index));
 			} else {
 				_didFail = true;
