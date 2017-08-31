@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Handsome.Prefabs {
 
-	public partial class ControlAdderButton : UserControl {
+	internal sealed partial class ControlAdderButton : UserControl {
 
 		private static readonly Color Green = Color.FromArgb(74, 202, 168);
 

@@ -3,12 +3,13 @@ using System.Windows.Forms;
 
 namespace Handsome.Prefabs {
 
-	partial class ControlAddClient {
+	internal sealed partial class ControlAddClient {
 
 		private Panel _mainPanel;
 		private Label _nameLabel;
 		private TextBox _nameBox;
 		private Panel _innerPanel;
+		private Button _button;
 		private Panel _phone1Panel;
 		private TextBox _phone1Box;
 		private Panel _phone0Panel;
@@ -43,10 +44,6 @@ namespace Handsome.Prefabs {
 			base.Dispose(disposing);
 		}
 
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
-		/// the contents of this method with the code editor.
-		/// </summary>
 		private void InitializeComponent () {
 			this._mainPanel = new Panel();
 			this._innerPanel = new Panel();
@@ -313,7 +310,6 @@ namespace Handsome.Prefabs {
 
 		}
 
-		private Button _button;
 	}
 
 }

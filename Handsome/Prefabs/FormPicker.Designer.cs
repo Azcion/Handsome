@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Handsome.Prefabs {
 
-	partial class FormPicker : Form {
+	internal sealed partial class FormPicker : Form {
 
 		private Panel _mainPanel;
 
@@ -36,6 +36,7 @@ namespace Handsome.Prefabs {
 			this._mainPanel.Location = new Point(0, 0);
 			this._mainPanel.Name = "_mainPanel";
 			this._mainPanel.Size = new Size(804, 600);
+			this._mainPanel.TabIndex = 0;
 			// 
 			// FormPicker
 			// 
@@ -44,9 +45,8 @@ namespace Handsome.Prefabs {
 			this.ClientSize = new Size(804, 600);
 			this.Controls.Add(this._mainPanel);
 			this.Name = "FormPicker";
-			this.Text = "FormPicker";
+			this.Text = "Handsome 1.0";
 			this.ResumeLayout(false);
-
 		}
 
 	}

@@ -4,7 +4,7 @@ using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
-	internal partial class ControlClient {
+	internal sealed partial class ControlClient {
 
 		private static readonly Color Green = Color.FromArgb(74, 202, 168);
 

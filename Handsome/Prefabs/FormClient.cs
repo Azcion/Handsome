@@ -6,7 +6,7 @@ using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
-	internal partial class FormClient {
+	internal sealed partial class FormClient {
 
 		private readonly Client _client;
 		private readonly List<Entry> _entries;
@@ -18,6 +18,7 @@ namespace Handsome.Prefabs {
 
 		public FormClient (Client client) {
 			InitializeComponent();
+			Text = @"Komitent";
 
 			_client = client;
 			_entries = new List<Entry>(client.Entries);

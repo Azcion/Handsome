@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Handsome.Prefabs {
 
-	partial class FormClient : Form {
+	internal sealed partial class FormClient : Form {
 
 		private RichTextBox _clientCard;
 		private Panel _entriesPanel;
@@ -28,19 +28,19 @@ namespace Handsome.Prefabs {
 
 		private void InitializeComponent () {
 			this._entriesPanel = new Panel();
-			this._entriesPanel.SuspendLayout();
 			this._clientCard = new RichTextBox();
 			this._mainPanel = new Panel();
 			this._mainPanel.SuspendLayout();
 			this.SuspendLayout();
-			//
+			// 
 			// _entriesPanel
-			//
+			// 
+			this._entriesPanel.AutoSize = true;
 			this._entriesPanel.BackColor = Color.DeepPink;
 			this._entriesPanel.Dock = DockStyle.Top;
+			this._entriesPanel.Location = new Point(0, 248);
 			this._entriesPanel.Name = "_entriesPanel";
-			this._entriesPanel.AutoSize = true;
-			//todo
+			this._entriesPanel.Size = new Size(804, 0);
 			// 
 			// _clientCard
 			// 
@@ -74,11 +74,10 @@ namespace Handsome.Prefabs {
 			this.ClientSize = new Size(804, 600);
 			this.Controls.Add(this._mainPanel);
 			this.Name = "FormClient";
-			this.Text = "FormClient";
-			this._entriesPanel.ResumeLayout();
+			this.Text = "Komitent";
 			this._mainPanel.ResumeLayout(false);
+			this._mainPanel.PerformLayout();
 			this.ResumeLayout(false);
-
 		}
 
 	}

@@ -4,14 +4,15 @@ using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
-	public partial class FormPicker {
+	internal sealed partial class FormPicker {
 
 		private ControlAdderButton _controlAdderButton;
 		private ControlAddClient _controlAddClient;
 
 		public FormPicker () {
 			InitializeComponent();
-			
+			Text = @"Handsome 1.0";
+
 			InsertClients();
 			InsertClientAdder();
 			InsertAdderButton();

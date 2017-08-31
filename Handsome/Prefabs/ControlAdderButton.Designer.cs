@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Handsome.Prefabs {
 
-	partial class ControlAdderButton {
+	internal sealed partial class ControlAdderButton {
 
 		private Panel _mainPanel;
 		private Button _button;
@@ -62,7 +62,6 @@ namespace Handsome.Prefabs {
 			this.Size = new Size(768, 140);
 			this._mainPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
-
 		}
 
 	}

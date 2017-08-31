@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Handsome.Prefabs {
 
-	internal partial class ControlClient : UserControl {
+	internal sealed partial class ControlClient : UserControl {
 
 		private Panel _mainPanel;
 		private RichTextBox _clientCard;
@@ -83,7 +83,6 @@ namespace Handsome.Prefabs {
 			this.Size = new Size(731, 123);
 			this._mainPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
-
 		}
 
 	}

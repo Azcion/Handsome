@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Handsome.Prefabs {
 
-	sealed partial class ControlEntry : UserControl {
+	internal sealed partial class ControlEntry : UserControl {
 
 		private Panel _labelsPanel;
 		private TextBox _valueLabel;
@@ -55,7 +55,6 @@ namespace Handsome.Prefabs {
 			this._entryPanel.Location = new Point(0, 0);
 			this._entryPanel.Name = "_entryPanel";
 			this._entryPanel.Size = new Size(500, 29);
-			this._entryPanel.TabIndex = 0;
 			// 
 			// _dataGrid
 			// 
