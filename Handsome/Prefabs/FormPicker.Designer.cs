@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Handsome.Prefabs {
@@ -25,6 +26,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void InitializeComponent () {
+			ComponentResourceManager resources = new ComponentResourceManager(typeof(FormPicker));
 			this._mainPanel = new Panel();
 			this.SuspendLayout();
 			// 
@@ -36,7 +38,6 @@ namespace Handsome.Prefabs {
 			this._mainPanel.Location = new Point(0, 0);
 			this._mainPanel.Name = "_mainPanel";
 			this._mainPanel.Size = new Size(804, 600);
-			this._mainPanel.TabIndex = 0;
 			// 
 			// FormPicker
 			// 
@@ -44,6 +45,7 @@ namespace Handsome.Prefabs {
 			this.AutoScaleMode = AutoScaleMode.Font;
 			this.ClientSize = new Size(804, 600);
 			this.Controls.Add(this._mainPanel);
+			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FormPicker";
 			this.Text = "Handsome 1.0";
 			this.ResumeLayout(false);

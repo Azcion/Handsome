@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Handsome.Prefabs {
@@ -27,6 +28,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void InitializeComponent () {
+			ComponentResourceManager resources = new ComponentResourceManager(typeof(FormClient));
 			this._entriesPanel = new Panel();
 			this._clientCard = new RichTextBox();
 			this._mainPanel = new Panel();
@@ -73,6 +75,7 @@ namespace Handsome.Prefabs {
 			this.BackColor = Color.Red;
 			this.ClientSize = new Size(804, 600);
 			this.Controls.Add(this._mainPanel);
+			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FormClient";
 			this.Text = "Komitent";
 			this._mainPanel.ResumeLayout(false);
