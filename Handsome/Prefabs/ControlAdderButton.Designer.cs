@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
@@ -46,7 +47,7 @@ namespace Handsome.Prefabs {
 			this._button.FlatAppearance.BorderSize = 0;
 			this._button.FlatStyle = FlatStyle.Flat;
 			this._button.Font = new Font("Open Sans", 36F, FontStyle.Regular, GraphicsUnit.Point, (byte) 238);
-			this._button.ForeColor = Color.White;
+			this._button.ForeColor = Colors.Background;
 			this._button.Location = new Point(256, 25);
 			this._button.Name = "_button";
 			this._button.Size = new Size(256, 90);

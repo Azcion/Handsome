@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using Handsome.Source;
 
@@ -9,8 +8,6 @@ namespace Handsome.Prefabs {
 	internal sealed partial class ControlEntry {
 
 		public readonly bool IsCheckout;
-
-		private static readonly Color Green = Color.FromArgb(74, 202, 168);
 
 		private readonly int _id;
 		private readonly FormClient _form;
@@ -33,18 +30,18 @@ namespace Handsome.Prefabs {
 		private static void SetStyle (ref DataGridViewCell cell, bool restore = false) {
 			if (restore) {
 				if (cell.RowIndex % 2 == 0) {
-					cell.Style.BackColor = cell.DataGridView.DefaultCellStyle.BackColor;
-					cell.Style.ForeColor = cell.DataGridView.DefaultCellStyle.ForeColor;
+					cell.Style.BackColor = Colors.CellBack;//cell.DataGridView.DefaultCellStyle.BackColor;
+					cell.Style.ForeColor = Colors.CellFore;//cell.DataGridView.DefaultCellStyle.ForeColor;
 				} else {
-					cell.Style.BackColor = cell.DataGridView.AlternatingRowsDefaultCellStyle.BackColor;
-					cell.Style.ForeColor = cell.DataGridView.AlternatingRowsDefaultCellStyle.ForeColor;
+					cell.Style.BackColor = Colors.CellBackAlt;//cell.DataGridView.AlternatingRowsDefaultCellStyle.BackColor;
+					cell.Style.ForeColor = Colors.CellForeAlt;//cell.DataGridView.AlternatingRowsDefaultCellStyle.ForeColor;
 				}
 
 				return;
 			}
 
-			cell.Style.BackColor = Color.IndianRed;
-			cell.Style.ForeColor = Color.White;
+			cell.Style.BackColor = Colors.CellErrorBack;
+			cell.Style.ForeColor = Colors.CellErrorFore;
 		}
 
 		private void AssembleLabels (Entry entry) {
@@ -67,7 +64,7 @@ namespace Handsome.Prefabs {
 				_dataGrid.Rows[index].Cells[3].ReadOnly = true;
 			}
 
-			_dataGrid.BackgroundColor = Green;
+			_dataGrid.BackgroundColor = Colors.Theme;
 
 			ResizeGrid(null, null);
 			_dataGrid.UserAddedRow += ResizeGrid;

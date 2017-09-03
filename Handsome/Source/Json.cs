@@ -20,7 +20,7 @@ namespace Handsome.Source {
 			string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 			path += @"\Azcion\Handsome\";
 
-			new FileInfo(path).Directory?.Create();
+			new FileInfo(path).Directory.Create();
 
 			DateTime dt = DateTime.Now;
 			string idString = $"{dt.Year}{dt.Month:D2}{dt.Day:D2}{dt.Hour:D2}{dt.Minute:D2}";

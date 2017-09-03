@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
@@ -114,7 +115,7 @@ namespace Handsome.Prefabs {
 			// 
 			// _namePanel
 			// 
-			this._namePanel.BackColor = Color.White;
+			this._namePanel.BackColor = Colors.Background;
 			this._namePanel.BorderStyle = BorderStyle.FixedSingle;
 			this._namePanel.Controls.Add(this._nameBox);
 			this._namePanel.Location = new Point(7, 25);
@@ -141,7 +142,7 @@ namespace Handsome.Prefabs {
 			// 
 			// _ownerPanel
 			// 
-			this._ownerPanel.BackColor = Color.White;
+			this._ownerPanel.BackColor = Colors.Background;
 			this._ownerPanel.BorderStyle = BorderStyle.FixedSingle;
 			this._ownerPanel.Controls.Add(this._ownerBox);
 			this._ownerPanel.Location = new Point(7, 106);
@@ -168,7 +169,7 @@ namespace Handsome.Prefabs {
 			// 
 			// _addressPanel
 			// 
-			this._addressPanel.BackColor = Color.White;
+			this._addressPanel.BackColor = Colors.Background;
 			this._addressPanel.BorderStyle = BorderStyle.FixedSingle;
 			this._addressPanel.Controls.Add(this._addressBox);
 			this._addressPanel.Location = new Point(7, 187);
@@ -197,7 +198,7 @@ namespace Handsome.Prefabs {
 			// _vatPanel
 			// 
 			this._vatPanel.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
-			this._vatPanel.BackColor = Color.White;
+			this._vatPanel.BackColor = Colors.Background;
 			this._vatPanel.BorderStyle = BorderStyle.FixedSingle;
 			this._vatPanel.Controls.Add(this._vatBox);
 			this._vatPanel.Location = new Point(489, 25);
@@ -226,7 +227,7 @@ namespace Handsome.Prefabs {
 			// _phone0Panel
 			// 
 			this._phone0Panel.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
-			this._phone0Panel.BackColor = Color.White;
+			this._phone0Panel.BackColor = Colors.Background;
 			this._phone0Panel.BorderStyle = BorderStyle.FixedSingle;
 			this._phone0Panel.Controls.Add(this._phone0Box);
 			this._phone0Panel.Location = new Point(489, 106);
@@ -255,7 +256,7 @@ namespace Handsome.Prefabs {
 			// _phone1Panel
 			// 
 			this._phone1Panel.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
-			this._phone1Panel.BackColor = Color.White;
+			this._phone1Panel.BackColor = Colors.Background;
 			this._phone1Panel.BorderStyle = BorderStyle.FixedSingle;
 			this._phone1Panel.Controls.Add(this._phone1Box);
 			this._phone1Panel.Location = new Point(489, 187);
@@ -277,7 +278,7 @@ namespace Handsome.Prefabs {
 			this._button.FlatAppearance.BorderSize = 0;
 			this._button.FlatStyle = FlatStyle.Flat;
 			this._button.Font = new Font("Open Sans", 36F, FontStyle.Regular, GraphicsUnit.Point, (byte) 238);
-			this._button.ForeColor = Color.White;
+			this._button.ForeColor = Colors.Background;
 			this._button.Location = new Point(678, 20);
 			this._button.Name = "_button";
 			this._button.Size = new Size(95, 231);
@@ -307,7 +308,6 @@ namespace Handsome.Prefabs {
 			this._phone1Panel.ResumeLayout(false);
 			this._phone1Panel.PerformLayout();
 			this.ResumeLayout(false);
-
 		}
 
 	}

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
@@ -38,7 +39,7 @@ namespace Handsome.Prefabs {
 			// _entriesPanel
 			// 
 			this._entriesPanel.AutoSize = true;
-			this._entriesPanel.BackColor = Color.DeepPink;
+			this._entriesPanel.BackColor = Colors.Error;
 			this._entriesPanel.Dock = DockStyle.Top;
 			this._entriesPanel.Location = new Point(0, 248);
 			this._entriesPanel.Name = "_entriesPanel";
@@ -46,7 +47,7 @@ namespace Handsome.Prefabs {
 			// 
 			// _clientCard
 			// 
-			this._clientCard.BackColor = Color.White;
+			this._clientCard.BackColor = Colors.Background;
 			this._clientCard.BorderStyle = BorderStyle.None;
 			this._clientCard.Dock = DockStyle.Top;
 			this._clientCard.Enabled = false;
@@ -60,7 +61,7 @@ namespace Handsome.Prefabs {
 			// _mainPanel
 			// 
 			this._mainPanel.AutoScroll = true;
-			this._mainPanel.BackColor = Color.GhostWhite;
+			this._mainPanel.BackColor = Colors.BackgroundAlt;
 			this._mainPanel.Controls.Add(this._entriesPanel);
 			this._mainPanel.Controls.Add(this._clientCard);
 			this._mainPanel.Dock = DockStyle.Fill;
@@ -72,7 +73,7 @@ namespace Handsome.Prefabs {
 			// 
 			this.AutoScaleDimensions = new SizeF(6F, 13F);
 			this.AutoScaleMode = AutoScaleMode.Font;
-			this.BackColor = Color.Red;
+			this.BackColor = Colors.Error;
 			this.ClientSize = new Size(804, 600);
 			this.Controls.Add(this._mainPanel);
 			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
