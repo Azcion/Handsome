@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Handsome.Source {
 
@@ -19,11 +20,20 @@ namespace Handsome.Source {
 			Data = data;
 			Value = SumValues(data);
 
-			_date = DateTime.ParseExact(date, "d.M.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+			_date = ParseDateUnsafe(date);
+		}
+
+		public static bool TryParseDate (string date, out DateTime result) {
+			return DateTime.TryParseExact(date, "d.M.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None,
+				out result);
 		}
 
 		public int Compare (Entry other) {
 			return DateTime.Compare(_date, other._date);
+		}
+
+		private static DateTime ParseDateUnsafe (string date) {
+			return DateTime.ParseExact(date, "d.M.yyyy", CultureInfo.InvariantCulture);
 		}
 
 		private static float SumValues (IEnumerable<Row> data) {

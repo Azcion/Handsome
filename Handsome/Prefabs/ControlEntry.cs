@@ -85,7 +85,9 @@ namespace Handsome.Prefabs {
 		}
 
 		private void DateChanged (object sender, EventArgs e) {
-			_form.UpdateDate(_dateLabel.Text, _id);
+			if (Entry.TryParseDate(_dateLabel.Text, out DateTime date)) {
+				_form.UpdateDate(_dateLabel.Text, _id);
+			}
 		}
 
 		private void UpdateGrid (object sender, EventArgs e) {
