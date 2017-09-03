@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
@@ -48,7 +49,7 @@ namespace Handsome.Prefabs {
 			// 
 			this._entryPanel.AutoScroll = true;
 			this._entryPanel.AutoSize = true;
-			this._entryPanel.BackColor = Color.White;
+			this._entryPanel.BackColor = Colors.Background;
 			this._entryPanel.Controls.Add(this._dataGrid);
 			this._entryPanel.Controls.Add(this._labelsPanel);
 			this._entryPanel.Dock = DockStyle.Top;
@@ -61,11 +62,11 @@ namespace Handsome.Prefabs {
 			this._dataGrid.AllowUserToResizeColumns = false;
 			this._dataGrid.AllowUserToResizeRows = false;
 			cellStyle0.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			cellStyle0.BackColor = Color.WhiteSmoke;
 			cellStyle0.Font = new Font("Open Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-			cellStyle0.ForeColor = Color.DimGray;
-			cellStyle0.SelectionBackColor = Color.Gainsboro;
-			cellStyle0.SelectionForeColor = Color.Black;
+			cellStyle0.BackColor = Colors.CellBackAlt;
+			cellStyle0.ForeColor = Colors.CellForeAlt;
+			cellStyle0.SelectionBackColor = Colors.CellSelectionBackAlt;
+			cellStyle0.SelectionForeColor = Colors.CellSelectionForeAlt;
 			cellStyle0.WrapMode = DataGridViewTriState.False;
 			this._dataGrid.AlternatingRowsDefaultCellStyle = cellStyle0;
 			this._dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -73,24 +74,24 @@ namespace Handsome.Prefabs {
 			this._dataGrid.CellBorderStyle = DataGridViewCellBorderStyle.None;
 			this._dataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 			cellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			cellStyle1.BackColor = Color.White;
 			cellStyle1.Font = new Font("Open Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-			cellStyle1.ForeColor = Color.DimGray;
-			cellStyle1.SelectionBackColor = Color.White;
-			cellStyle1.SelectionForeColor = Color.DimGray;
+			cellStyle1.BackColor = Colors.CellHeaderBack;
+			cellStyle1.ForeColor = Colors.CellHeaderFore;
+			cellStyle1.SelectionBackColor = Colors.CellHeaderSelectionBack;
+			cellStyle1.SelectionForeColor = Colors.CellHeaderSelectionFore;
 			cellStyle1.WrapMode = DataGridViewTriState.False;
 			this._dataGrid.ColumnHeadersDefaultCellStyle = cellStyle1;
 			this._dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			cellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			cellStyle2.BackColor = SystemColors.Window;
 			cellStyle2.Font = new Font("Open Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(238)));
-			cellStyle2.ForeColor = Color.DimGray;
-			cellStyle2.SelectionBackColor = Color.Gainsboro;
-			cellStyle2.SelectionForeColor = Color.Black;
+			cellStyle2.BackColor = Colors.CellBack;
+			cellStyle2.ForeColor = Colors.CellFore;
+			cellStyle2.SelectionBackColor = Colors.CellSelectionBack;
+			cellStyle2.SelectionForeColor = Colors.CellSelectionFore;
 			cellStyle2.WrapMode = DataGridViewTriState.False;
 			this._dataGrid.DefaultCellStyle = cellStyle2;
 			this._dataGrid.Dock = DockStyle.Fill;
-			this._dataGrid.GridColor = Color.White;
+			this._dataGrid.GridColor = Colors.Background;
 			this._dataGrid.Location = new Point(0, 29);
 			this._dataGrid.Name = "_dataGrid";
 			this._dataGrid.RowTemplate.Height = 25;

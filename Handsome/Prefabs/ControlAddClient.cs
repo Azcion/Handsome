@@ -1,11 +1,9 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
 	internal sealed partial class ControlAddClient : UserControl {
-
-		private static readonly Color Green = Color.FromArgb(74, 202, 168);
 
 		public ControlAddClient () {
 			InitializeComponent();
@@ -14,7 +12,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void AssembleButton () {
-			_button.BackColor = Green;
+			_button.BackColor = Colors.Theme;
 		}
 
 	}

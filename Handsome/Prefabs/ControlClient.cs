@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Drawing;
 using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
 	internal sealed partial class ControlClient {
-
-		private static readonly Color Green = Color.FromArgb(74, 202, 168);
 
 		private readonly Client _client;
 
@@ -31,7 +28,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void AssembleButton () {
-			_button.BackColor = Green;
+			_button.BackColor = Colors.Theme;
 			_button.Click += OpenFormClient;
 		}
 

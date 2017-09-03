@@ -79,6 +79,7 @@
     <Compile Include="Prefabs\ControlClient.Designer.cs">
       <DependentUpon>ControlClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\Colors.cs" />
     <Compile Include="Source\Data.cs" />
     <Compile Include="Source\Entry.cs" />
     <Compile Include="Prefabs\ControlEntry.cs">
