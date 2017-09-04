@@ -30,11 +30,11 @@ namespace Handsome.Prefabs {
 		private static void SetStyle (ref DataGridViewCell cell, bool restore = false) {
 			if (restore) {
 				if (cell.RowIndex % 2 == 0) {
-					cell.Style.BackColor = Colors.CellBack;//cell.DataGridView.DefaultCellStyle.BackColor;
-					cell.Style.ForeColor = Colors.CellFore;//cell.DataGridView.DefaultCellStyle.ForeColor;
+					cell.Style.BackColor = Colors.CellBack;
+					cell.Style.ForeColor = Colors.CellFore;
 				} else {
-					cell.Style.BackColor = Colors.CellBackAlt;//cell.DataGridView.AlternatingRowsDefaultCellStyle.BackColor;
-					cell.Style.ForeColor = Colors.CellForeAlt;//cell.DataGridView.AlternatingRowsDefaultCellStyle.ForeColor;
+					cell.Style.BackColor = Colors.CellBackAlt;
+					cell.Style.ForeColor = Colors.CellForeAlt;
 				}
 
 				return;
@@ -82,7 +82,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void DateChanged (object sender, EventArgs e) {
-			if (Entry.TryParseDate(_dateLabel.Text, out DateTime date)) {
+			if (Entry.TryParseDate(_dateLabel.Text, out DateTime _)) {
 				_form.UpdateDate(_dateLabel.Text, _id);
 			}
 		}
