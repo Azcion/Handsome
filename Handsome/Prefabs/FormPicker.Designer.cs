@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Handsome.Source;
 
 namespace Handsome.Prefabs {
 
@@ -33,7 +34,7 @@ namespace Handsome.Prefabs {
 			// _mainPanel
 			// 
 			this._mainPanel.AutoScroll = true;
-			this._mainPanel.BackColor = Color.White;
+			this._mainPanel.BackColor = Colors.Background;
 			this._mainPanel.Dock = DockStyle.Fill;
 			this._mainPanel.Location = new Point(0, 0);
 			this._mainPanel.Name = "_mainPanel";
