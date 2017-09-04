@@ -77,7 +77,8 @@ namespace Handsome.Prefabs {
 
 		private void ShowClientAdder (object sender, EventArgs e) {
 			_controlAdderButton.Visible = false;
-			_controlAddClient.Visible = true;		
+			_controlAddClient.Visible = true;
+			_controlAddClient.Controls["_mainPanel"].Select();
 		}
 
 		private void CreateClientFromInput (object sender, EventArgs e) {
