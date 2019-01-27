@@ -48,7 +48,7 @@ namespace Handsome.Prefabs {
 			this.Controls.Add(this._mainPanel);
 			this.Icon = ((Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FormPicker";
-			this.Text = "Handsome 1.0";
+			this.Text = "Handsome 1.1";
 			this.ResumeLayout(false);
 		}
 
