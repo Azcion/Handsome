@@ -96,7 +96,7 @@ namespace Handsome.Prefabs {
 				return;
 			}
 
-			for (var i = 0; i < dataGrid.RowCount - 1; i++) {
+			for (int i = 0; i < dataGrid.RowCount - 1; i++) {
 				DataGridViewRow row = dataGrid.Rows[i];
 				DataGridViewCell quantityCell = row.Cells[0];
 				DataGridViewCell nameCell = row.Cells[1];
@@ -109,7 +109,7 @@ namespace Handsome.Prefabs {
 					SetStyle(ref quantityCell, true);
 				}
 
-				if (float.TryParse(priceCell.Value?.ToString().Replace(',', '.'), out float price) == false) {
+				if (float.TryParse(priceCell.Value?.ToString().Replace('.', ','), out float price) == false) {
 					SetStyle(ref priceCell);
 					didFail = true;
 				} else {
