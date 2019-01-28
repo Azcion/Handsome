@@ -11,7 +11,7 @@ namespace Handsome.Prefabs {
 
 		public FormPicker () {
 			InitializeComponent();
-			Text = @"Handsome 1.0";
+			Text = @"Handsome 1.1";
 
 			InsertClients();
 			InsertClientAdder();
