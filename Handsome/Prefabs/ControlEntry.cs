@@ -142,7 +142,8 @@ namespace Handsome.Prefabs {
 				}
 			}
 
-			_form.UpdateData(data, _dateLabel.Text, didFail, _id);
+			Entry entry = _form.UpdateData(data, _dateLabel.Text, didFail, _id);
+			_valueLabel.Text = Row.Format(entry.Value);
 		}
 
 		#endregion

@@ -38,16 +38,18 @@ namespace Handsome.Prefabs {
 			_entries[id] = entry;
 		}
 
-		public void UpdateData (List<Row> data, string date, bool didFail, int id) {
+		public Entry UpdateData (List<Row> data, string date, bool didFail, int id) {
 			_didChange = true;
 			_didFail = didFail;
 
 			if (didFail) {
-				return;
+				return new Entry();
 			}
 
 			Entry entry = new Entry(date, _entries[id].IsCheckout, data);
 			_entries[id] = entry;
+
+			return entry;
 		}
 
 		private void AssembleClientCard () {
