@@ -10,13 +10,13 @@ namespace Handsome.Prefabs {
 
 		public readonly bool IsCheckout;
 
-		private static readonly string decimalSeparator;
+		private static readonly string DecimalSeparator;
 
 		private readonly int _id;
 		private readonly FormClient _form;
 
 		static ControlEntry () {
-			decimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+			DecimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
 		}
 
 		public ControlEntry (FormClient form, Entry entry, int id) {
@@ -117,7 +117,7 @@ namespace Handsome.Prefabs {
 				}
 
 				string prepForParse = priceCell.Value?.ToString() ?? "-";
-				prepForParse = decimalSeparator == ","
+				prepForParse = DecimalSeparator == ","
 					? prepForParse.Replace('.', ',')
 					: prepForParse.Replace(',', '.');
 

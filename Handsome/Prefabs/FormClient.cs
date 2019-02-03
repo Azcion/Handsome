@@ -68,7 +68,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void InsertEntries () {
-			for (var i = 0; i < _entries.Count; i++) {
+			for (int i = 0; i < _entries.Count; i++) {
 				Entry entry = _entries[i];
 				_entriesPanel.Controls.Add(new ControlEntry(this, entry, i));
 			}
