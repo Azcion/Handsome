@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 using Handsome.Source;
 
@@ -9,9 +10,15 @@ namespace Handsome.Prefabs {
 
 		public readonly bool IsCheckout;
 
+		private static readonly string decimalSeparator;
+
 		private readonly int _id;
 		private readonly FormClient _form;
-		
+
+		static ControlEntry () {
+			decimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+		}
+
 		public ControlEntry (FormClient form, Entry entry, int id) {
 			InitializeComponent();
 
@@ -82,7 +89,7 @@ namespace Handsome.Prefabs {
 		}
 
 		private void DateChanged (object sender, EventArgs e) {
-			if (Entry.TryParseDate(_dateLabel.Text, out DateTime _)) {
+			if (Entry.TryParseDate(_dateLabel.Text, out _)) {
 				_form.UpdateDate(_dateLabel.Text, _id);
 			}
 		}
@@ -109,7 +116,12 @@ namespace Handsome.Prefabs {
 					SetStyle(ref quantityCell, true);
 				}
 
-				if (float.TryParse(priceCell.Value?.ToString().Replace('.', ','), out float price) == false) {
+				string prepForParse = priceCell.Value?.ToString() ?? "-";
+				prepForParse = decimalSeparator == ","
+					? prepForParse.Replace('.', ',')
+					: prepForParse.Replace(',', '.');
+
+				if (float.TryParse(prepForParse, out float price) == false) {
 					SetStyle(ref priceCell);
 					didFail = true;
 				} else {
